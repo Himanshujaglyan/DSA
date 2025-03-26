@@ -20,9 +20,39 @@ void Reverse_CharArray(char ch[]){
     }
 }
 //-------------------------------------------------
+void Fillthespace(char ch[]){
+    for (int i = 0; i < strlen(ch); i++) 
+    {
+        if(ch[i] == ' '){
+            ch[i] = '@';
+        }
+    }
+}
+//------------------------------------------------
+bool checkPalindrom(char ch[]){
+    int i = 0 , j = getLength(ch) - 1 ; 
+    while(i <= j){
+     if(ch[i] != ch[j]){
+        return false;
+     }else{
+        i++,j--;
+     }
+    }
+    return true;
+}
+//------------------------------------------------
+void ConvertIntoUpperCase(char ch[]){
+    for (int i = 0; i < getLength(ch); i++)
+    {
+        ch[i] = ch[i]-'a'+'A';
+    }
+
+}
+//-----------------------------------------------
 
 
 int main(){
+    // 1st Class of Char Array and String!!****************************************
 // Qus1 Length of char Array?
     // char ch[10] = {'a','s','f','g','h','t','e','g','d'};
     // int length = getLength(ch);
@@ -34,6 +64,32 @@ int main(){
     // Reverse_CharArray(ch);
     // cout<<ch;
     
-// Qus3    
+// Qus3 Fill spaces with @ symbol?
+    // char ch[100];
+    // cout<<"Enter your String = ";
+    // cin.getline(ch,100);
+    // Fillthespace(ch);
+    // cout<<ch;
+    
+// Qus4 Check Palindrom or not?
+    // char ch[10];
+    // cout<<"Enter input = ";
+    // cin>>ch;
+    // if(checkPalindrom(ch)){
+    //     cout<<"Yes it is palindrom!!";
+    // }else{
+    //     cout<<"It is not Palindrom!!";
+    // }
+
+// Qus5 Convert lowercase character to upper case?
+    // char ch[10];
+    // cout<<"Enter the String = ";
+    // cin>>ch;
+    // ConvertIntoUpperCase(ch);
+    // cout<<ch;
+
+    //2nd Class of Char Array and String!!*************************************
+
+// Qus6 
     return 0;
 }
