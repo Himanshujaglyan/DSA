@@ -49,7 +49,24 @@ void ConvertIntoUpperCase(char ch[]){
 
 }
 //-----------------------------------------------
-
+string removeDuplicates(string str){
+    string ans;
+    int i = 0 ;
+    while(i < str.length()){
+        if(str.length() > 0){
+            if(str[i] == ans[ans.length() - 1]){
+                ans.pop_back();
+            }else{
+                ans.push_back(str[i]);
+            }
+        }else{
+            ans.push_back(str[i]);
+        }
+        i++;
+    }
+    return ans;
+}
+//-----------------------------------------------
 
 int main(){
     // 1st Class of Char Array and String!!****************************************
@@ -90,6 +107,12 @@ int main(){
 
     //2nd Class of Char Array and String!!*************************************
 
-// Qus6 
+// Qus6 Remove all adjacent Duplicate in the String?
+    // string str = "abbaca";//Output: "ca"
+    // string ans = removeDuplicates(str);
+    // cout<<ans;
+    
+// Qus7  CONTINUE FROM VIDEO 15:00
+    
     return 0;
 }
