@@ -67,6 +67,40 @@ string removeDuplicates(string str){
     return ans;
 }
 //-----------------------------------------------
+string removeAllOccurrences(string str , string part){
+    int n = str.length();
+    int m = part.length();
+
+    for (int i = 0; i < n - m; i++)
+    {
+        int pos = str.find(part);
+        if(pos != string::npos){
+            str.erase(pos,m);
+            pos = str.find(part);
+        }
+    }
+    return str;
+}
+//-----------------------------------------------
+int FindInstring(string str , string part){
+    int n = str.length();
+    int m = part.length();
+    for (int i = 0; i <= n - m; i++)
+    {
+        bool flag = true;
+        for (int j = 0; j < m; j++)
+        {
+            if(str[i+j] != part[j]){
+                flag = false;
+                break;
+            }
+        }
+        if(flag) return i;
+    }
+    return -1;
+}
+//--------------------------------------------
+
 
 int main(){
     // 1st Class of Char Array and String!!****************************************
@@ -112,7 +146,26 @@ int main(){
     // string ans = removeDuplicates(str);
     // cout<<ans;
     
-// Qus7  CONTINUE FROM VIDEO 15:00
-    
+// Qus7 Remove all occurrences of a substring?
+    // string str = "daabcbaabcbc";
+    // string part = "abc";
+    // string rem = removeAllOccurrences(str,part);
+    // cout<<rem;  
+   
+// Qus8 Find part of string in big string and return the first find index
+    // yai qus ager interviewerr bol de ke find() function mat use kero manually find ka code likho
+    // string str = "Himanshu";
+    // string part = "man";
+    // int findIndex = FindInstring(str, part);
+    // cout<<findIndex;
+   
+   
+
+
+
+
+
+
+
     return 0;
 }
