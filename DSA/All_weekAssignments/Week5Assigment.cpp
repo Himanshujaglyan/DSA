@@ -40,6 +40,17 @@ bool checkPalindrom(char ch[]){
     }
     return true;
 }
+bool checkPalindrom1(string str,int start , int end){
+    int i = start , j = end ; 
+    while(i <= j){
+     if(str[i] != str[j]){
+        return false;
+     }else{
+        i++,j--;
+     }
+    }
+    return true;
+}
 //------------------------------------------------
 void ConvertIntoUpperCase(char ch[]){
     for (int i = 0; i < getLength(ch); i++)
@@ -100,7 +111,17 @@ int FindInstring(string str , string part){
     return -1;
 }
 //--------------------------------------------
-
+bool Valid_Palindrome(string str){
+    int i = 0 , j = str.length() - 1;
+    while(i <= j){
+        if(str[i] != str[j]){
+            return checkPalindrom1(str,i+1 , j) || checkPalindrom1(str,i , j-1);
+        }else{
+            i++,j--;
+        }
+    }
+    return true;
+}
 
 int main(){
     // 1st Class of Char Array and String!!****************************************
@@ -159,6 +180,14 @@ int main(){
     // int findIndex = FindInstring(str, part);
     // cout<<findIndex;
    
+// Qus9 Valid Palindrome (||)
+    // string str = "leverl";
+    // if(Valid_Palindrome(str)){
+    //     cout<<"This is valid Palindrome!";
+    // }else{
+    //     cout<<"Not a valid Palindrome!";
+    // }
+
    
 
 
