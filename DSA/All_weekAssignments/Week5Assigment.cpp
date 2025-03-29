@@ -122,6 +122,43 @@ bool Valid_Palindrome(string str){
     }
     return true;
 }
+//-------------------------------------------
+int MinimumTimeDifference(vector<string> str){
+    vector<int> minutes;
+
+    for (int i = 0; i < str.size(); i++)
+    {
+        string curr = str[i];
+        int hour = stoi(curr.substr(0,2));
+        int min = stoi(curr.substr(3,2));
+        int totalmin = hour * 60 + min;
+        minutes.push_back(totalmin);
+    }
+    sort(minutes.begin(),minutes.end());
+    int mini = INT_MAX;
+    int n = minutes.size();
+    for (int i = 0; i < minutes.size(); i++)
+    {
+        int temp = minutes[i + 1] - minutes[i];
+        mini= min(mini,temp);
+    }
+    int diff = (minutes[0] + 1440) - minutes[n-1];
+    mini = min(mini, diff);
+
+    return mini;
+}
+//-------------------------------------------
+int possiblePalindromicSubstring(string str , int i , int j ){
+    int count = 0;
+    while(i >= 0 && j < str.length() && str[i] == str[j]){
+        count++;
+        i--,j++;
+    }
+    return count;
+}
+//-------------------------------------------
+
+
 
 int main(){
     // 1st Class of Char Array and String!!****************************************
@@ -180,7 +217,7 @@ int main(){
     // int findIndex = FindInstring(str, part);
     // cout<<findIndex;
    
-// Qus9 Valid Palindrome (||)
+// Qus9 Valid Palindrome (||) leetcode - 680    
     // string str = "leverl";
     // if(Valid_Palindrome(str)){
     //     cout<<"This is valid Palindrome!";
@@ -188,12 +225,22 @@ int main(){
     //     cout<<"Not a valid Palindrome!";
     // }
 
-   
+// Qus10 Minimum Time Difference leetcode-539
+        // vector<string> str = {"12:10","10:15","13:15","17:20","18:00","19:47","23:59"}; 
+        // int minimum = MinimumTimeDifference(str);
+        // cout<<minimum;
 
-
-
-
-
+// Qus11 Possible palindromic substring leetcode - 647
+        // string str = "anant";
+        // int count = 0;
+        // for (int i = 0; i < str.length(); i++)
+        // {
+        //     int oddkaCount = possiblePalindromicSubstring(str , i , i);
+        //     count = count + oddkaCount;
+        //     int evenkaCount = possiblePalindromicSubstring(str , i , i+1);
+        //     count = count + evenkaCount;
+        // }
+        // cout<<count;
 
 
     return 0;
