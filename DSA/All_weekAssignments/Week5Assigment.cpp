@@ -196,6 +196,38 @@ string ReverseOnlyLetters(string str){
     return str;
 }
 //------------------------------------------
+string LongestCommanPrefix(vector<string> str){
+    if(str.empty()) return "";
+    string prefix = str[0];
+    for (int i = 1; i < str.size(); i++)
+    {
+        while(str[i].find(prefix) !=  0){
+            prefix = prefix.substr(0,prefix.length() - 1);
+            if(prefix.empty()) return "";
+        }
+    }
+    return prefix;
+}
+//------------------------------------------
+bool isvowel(char ch){
+    ch = tolower(ch);
+    return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+}
+string ReverseOnlyVowel(string s){
+    int l = 0 , h = s.length()-1;
+    while(l < h){
+        if(isvowel(s[l]) && isvowel(s[h])){
+            swap(s[l],s[h]);
+            l++,h--;
+        }else if(!isvowel(s[l])){
+            l++;
+        }else{
+            h--;
+        }
+    }
+    return s; 
+}
+//------------------------------------------
 
 
 int main(){
@@ -299,6 +331,15 @@ int main(){
     // string ans = ReverseOnlyLetters(str);
     // cout<<ans;
     
-// Qus 3 
+// Qus 3 Longest Comman Prefix? 
+        // vector<string> str = {"flower","flow","flight"};
+        // string ans = LongestCommanPrefix(str);
+        // cout<<ans;
+    
+// Qus 4 Reverse Only Vowels?
+    // string str = "leetcode"; // output - leotcede;
+    // string ans = ReverseOnlyVowel(str);
+    // cout<<ans;
+       
     return 0;
 }
