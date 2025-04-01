@@ -156,8 +156,46 @@ int possiblePalindromicSubstring(string str , int i , int j ){
     }
     return count;
 }
-//-------------------------------------------
 
+//------------------------------Assignment Qus-----------------------------------------------------
+
+bool validAnagram(string str1 , string str2){
+    int hashTable[256] = {0};
+    if(str1.length() != str2.length()){
+        return false;
+    }
+    for (int i = 0; i < str1.length(); i++)
+    {
+        hashTable[str1[i]]++;
+    }
+    for (int i = 0; i < str2.length(); i++)
+    {
+        hashTable[str2[i]]--;
+    }
+    for (int i = 0; i < 256; i++)
+    {
+        if(hashTable[i] != 0){
+            return false;
+        }
+    }
+    return true;
+}
+//-------------------------------------------
+string ReverseOnlyLetters(string str){
+    int l = 0 , r = str.length() - 1;
+    while(l < r){
+        if(isalpha(str[l]) && isalpha(str[r])){
+            swap(str[l],str[r]);
+            l++,r--;
+        }else if(!isalpha(str[l])){
+            l++;
+        }else{
+            r--;
+        }
+    }
+    return str;
+}
+//------------------------------------------
 
 
 int main(){
@@ -243,9 +281,24 @@ int main(){
         // cout<<count;
 
         //2nd WEEK 5 CONNECTION !!*************************************
+// ------------------------------------------------------------------------------------------------------
+        // Assignment Qus week 5 Strings @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    string str = "Himanshu";
-    string get = str.substr(3,2);
-    cout<<get;
+// Qus 1 Valid Anagram (Leetcode - 242)
+        // string str1 = "anagram";
+        // string str2 = "nagaram";
+        // if(validAnagram(str1,str2)){
+        //     cout<<"valid Anagram";
+        // }
+        // else{
+        //     cout<<"Not Anagram";
+        // }
+
+// Qus 2 Reverse Only Letters?
+    // string str = "a-bC-dEf-ghIj!"; // Output - j-Ih-gfE-dCba!
+    // string ans = ReverseOnlyLetters(str);
+    // cout<<ans;
+    
+// Qus 3 
     return 0;
 }
