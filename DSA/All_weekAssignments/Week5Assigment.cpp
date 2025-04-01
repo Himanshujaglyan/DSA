@@ -242,6 +242,10 @@ int main(){
         // }
         // cout<<count;
 
+        //2nd WEEK 5 CONNECTION !!*************************************
 
+    string str = "Himanshu";
+    string get = str.substr(3,2);
+    cout<<get;
     return 0;
 }
