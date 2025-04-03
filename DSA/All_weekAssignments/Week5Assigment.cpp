@@ -228,6 +228,73 @@ string ReverseOnlyVowel(string s){
     return s; 
 }
 //------------------------------------------
+bool CheckIsomorphicString(string s , string t){
+    int hash[256] = {0};
+    bool ischarMapping[256] = {0};
+    for (int i = 0; i < s.length(); i++)
+    {
+        if(hash[s[i]] == 0 && ischarMapping[t[i]] == 0){
+            hash[s[i]] = t[i];
+            ischarMapping[t[i]] = true;
+        }
+    }
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        if(char(hash[s[i]]) != t[i]){
+            return false;
+        }
+    }
+    return true;
+}
+//------------------------------------------
+string ReorganizeString(string s){
+    int hash[26] = {0};
+    //yaha mene hash ke ander jitne bhi character hai unka count store kiya hai 
+    for (int i = 0; i < s.size(); i++)
+    {
+        hash[s[i] - 'a']++;
+    }
+    //ab me yaha vo character find kerunga jo jada baar aaya hai or konsa character hai vo
+    int max_freq = INT_MIN;
+    char max_freq_char;
+    for (int i = 0; i < 26; i++)
+    {
+        if(hash[i] > max_freq){
+            max_freq = hash[i];
+            max_freq_char = i + 'a';
+        }
+    }
+    // ab me ek single round me max frequency character dekhunga ke ek gap me saare max character aara hai kya
+    int index = 0 ;
+    for (int i = 0; i < 26; i++)
+    {
+        if(max_freq > 0 && index < s.size()){
+            s[index] = max_freq_char;
+            max_freq--;
+            index += 2;
+        }
+    }
+
+    // ab me yaha check ker raha hu ke ager max_freq zero ke equal nahi hua matlb ek flow me saare max character adjust nahi hua
+    if(max_freq != 0){
+        return "";
+    }    
+
+    // jub vo kaam ache se hua to phir baki ke character bhi adjust kerte hai 
+    for (int i = 0; i < 26; i++)
+    {
+        while(hash[i] > 0){
+            index = index >= s.size()? 1 : index;
+            s[index] = i + 'a';
+            hash[i]--;
+            index += 2;
+        }
+    }
+    
+    return s;
+}
+//--------------------------------------------
 
 
 int main(){
@@ -341,5 +408,24 @@ int main(){
     // string ans = ReverseOnlyVowel(str);
     // cout<<ans;
        
+// Qus 5 Isomorphic String (Boys/Girls) example
+    // string S = "egg";
+    // string T = "add";
+    // if(CheckIsomorphicString(S,T)){
+    //     cout<<"It is Isomorphic String";
+    // }else{
+    //     cout<<"Not Isomorphic String";
+    // }
+    
+// Qus 6 Reorgnaize String  leetcode - 767
+    // string str = "aaabef";
+    // string ans = ReorganizeString(str);
+    // cout<<ans;
+    
+    
+    
+    
+    
+
     return 0;
 }
