@@ -309,7 +309,22 @@ vector<vector<string>> GroupAllSimilar_Anagram(vector<string> strs){
     return ans;
 }
 //--------------------------------------------
-
+int findFirstIndex(string str , string part){
+    int n = str.length();
+    int m = part.length();
+    for(int i = 0 ; i < n - m ; i++){
+        for(int j = 0 ; j < m ; j++){
+            if(str[i+j] != part[j]){
+                break;
+            }
+            if(j == m-1){
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+//-------------------------------------------
 
 
 
@@ -453,9 +468,11 @@ int main(){
 // Qus 8 Longest Palindromic Substring (leetcode - 5)
     //  ! ESKA SOLUTION jub me Dynamic programing kerunga tub milega merko 
 
-
-
-
+//Qus 9 Find the index of first Occurence (leetcode - 28)
+    // string str = "Himanshu";
+    // string part = "man";
+    // int findIndex = findFirstIndex(str, part);
+    // cout<<findIndex;
 
 
 
