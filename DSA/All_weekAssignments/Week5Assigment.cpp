@@ -249,7 +249,7 @@ bool CheckIsomorphicString(string s , string t){
 }
 //------------------------------------------
 string ReorganizeString(string s){
-    int hash[26] = {0};
+    int hash[26] = {0};//roundof karte hai jisme
     //yaha mene hash ke ander jitne bhi character hai unka count store kiya hai 
     for (int i = 0; i < s.size(); i++)
     {
@@ -325,8 +325,55 @@ int findFirstIndex(string str , string part){
     return -1;
 }
 //-------------------------------------------
+int StringToInteger(string str){
+    int sign = 1 , i = 0 , num = 0;
+    //to handle white spaces
+    while(str[i] == ' '){
+        i++;
+    }   
+    //to find sign
+    while(i < str.length() && (str[i] == '+' || str[i] == '-')){
+    sign = str[i] == '+' ? 1 : -1;
+    i++;
+    }
 
+    //to calulate number
+    while(i < str.length() && isdigit(str[i])){
+    
+        //check size ke outof range na chla jaye (bus yahi yaad rakhna hai es qus me )
+        //range me ans aaye isliye
+        if(num > INT_MAX /10 || (num == INT_MAX /10 && str[i] > '7')){
+            return sign == -1 ? INT_MIN : INT_MAX;  
+        }
 
+        num = num * 10 + (str[i] - '0'); // yai 0 integer value is 48 to vo integer me convert ker raha hia
+        i++;
+    }
+    return num*sign;
+
+}
+//------------------------------------------
+string StringCompression(string str){
+    int index = 0;
+    for (int i = 0; i < str.length(); i++)
+    {
+        char currentChar = str[i];
+        int count = 1;
+        while(i+1 < str.length() && str[i] == str[i+1]){
+            count++;
+            i++;
+        }
+        str[index++] = currentChar;
+        if(count > 1){
+            string countstr = to_string(count);
+            for(char c : countstr){
+                str[index++] = c;
+            }
+        }
+    }
+    return str.substr(0,index);// you will now becoma a problem solver
+}
+//------------------------------------------
 
 
 int main(){
@@ -468,13 +515,25 @@ int main(){
 // Qus 8 Longest Palindromic Substring (leetcode - 5)
     //  ! ESKA SOLUTION jub me Dynamic programing kerunga tub milega merko 
 
+
 //Qus 9 Find the index of first Occurence (leetcode - 28)
     // string str = "Himanshu";
     // string part = "man";
     // int findIndex = findFirstIndex(str, part);
     // cout<<findIndex;
 
-
+//Qus 10 String to Integer without using atoi in built method (leetcode - 8)
+    // string str = "42"; // various inputs works :- "-42", "  -42" , " 123abc";
+    // int ans = StringToInteger(str);
+    // cout<<ans;
+    
+//QUS 11 String compression (leetcode = 443) and eska solution meri string wali notebook se kiya hai 
+    // string str = "aaabbcc"; // output = a3b2c2
+    // string ans = StringCompression(str);
+    // cout<<ans;
+   
+    
+ //Qus 12 Integer to roman qus   
 
     return 0;
 }
