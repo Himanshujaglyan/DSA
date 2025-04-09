@@ -374,7 +374,20 @@ string StringCompression(string str){
     return str.substr(0,index);// you will now becoma a problem solver
 }
 //------------------------------------------
+string IntegerToRoman(int num){
+    string ans="";
+    string romanArray[] = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+    int values[] = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
 
+    for (int i = 0; i < 13; i++)
+    {
+        while(num >= values[i]){
+            ans += romanArray[i];
+            num -= values[i];
+        }
+    }
+    return ans;
+}
 
 int main(){
     // 1st Class of Char Array and String!!****************************************
@@ -533,7 +546,11 @@ int main(){
     // cout<<ans;
    
     
- //Qus 12 Integer to roman qus   
-
+ //Qus 12 Integer to roman (leetcode - 12)
+    // int num = 1949;
+    // string ans = IntegerToRoman(num);
+    // cout<<ans;
+    
+    // !--------------------Done----------------------------------
     return 0;
 }
