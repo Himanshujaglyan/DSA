@@ -17,7 +17,28 @@ int  FirstOccurencebinarySearch(vector<int> arr ,int target){
     }
     return ans;
 }
-// ----------------------------------
+//---------------------------------
+int findMissing(vector<int>& arr) {
+    int low = 0, high = arr.size() - 1;
+    int start = arr[0]; // starting element
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        // Check if current element follows the expected pattern
+        if (arr[mid] == start + mid) {
+            // Left part is fine, go right
+            low = mid + 1;
+        } else {
+            // Pattern broke, go left
+            high = mid - 1;
+        }
+    }
+
+    // At the end, 'low' will point to the missing index
+    return start + low;
+}
+//  ----------------------------------
 int findSquareRoot(vector<int> arr , int target){
     int start = 0, end = arr.size() - 1;
     int ans = -1;
@@ -256,6 +277,14 @@ int main(){
     // int target = 5;
     // int firstOccurence = FirstOccurencebinarySearch(arr , target);
     // cout<<"firstOccurence of "<<target <<" is "<<firstOccurence;
+
+//! Qus Find Missing Element jaha range given na ho
+    // Ex: sum wala or XOR wala logic tub lag sakta hai ager missing element 1 to N ke bich find ker
+    // ho lekin jaha range kisi number se given ho waha Binary search hi use hoga okk!!
+    // int main(){
+    //     vector<int> arr = {10,11,12,14,15};
+    //     int find = findMissing(arr);
+    //    cout<<find;
 
 // Qus Find square root of given number****
     // vector<int> arr = {0,1,2,3,4,5,6,7,8,9,10};
