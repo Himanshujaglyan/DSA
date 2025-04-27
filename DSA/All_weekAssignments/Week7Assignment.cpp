@@ -31,10 +31,12 @@ int fib(int n ){
     int ans = fib(n-1) + fib(n-2);
     return ans;
 }
+//----------------------------------------------
+
+
 int main(){
-    //! Recusion Level-1 
-// power of two using recursion 
-// fibonaci serries using recursion
+    //! Recursion Level-1 
+    // Note : Yai jo niche 4 qus hai yai bhi ho sakte hai recursion Baki jo lecture me hua hai vo niche solve hai
 // you have a number given you have to print the all digits of that number 
 // find min and max number in the array using recursion
 // find an element present in the array or not using recusion / or find on which index it was / 
@@ -64,6 +66,8 @@ int main(){
     // int ans = fib(n);
     // cout<<ans;
     
+    //! Recursion Level-2
 
+  
     return 0;
 } 
