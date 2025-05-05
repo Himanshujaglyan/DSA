@@ -1,4 +1,9 @@
 //! Recursion***********************************************************************
+//! Important Note:
+    // -->Recursion qus kerne se pahle simple tarike se solve kerne ka socha ker thekk hai 
+    // -->Base case ka socha ker 80% sol mil jayega
+
+
 #include<bits/stdc++.h>
 using namespace std;
 void counting1(int n ){
@@ -32,6 +37,58 @@ int fib(int n ){
     return ans;
 }
 //----------------------------------------------
+int climbStaires(int n ){
+  if(n == 0 || n == 1) return 1;
+  int ans = climbStaires(n-1) + climbStaires(n-2);
+  return ans;
+}
+//----------------------------------------------
+void printArrayElement(vector<int> arr , int n , int i){
+    //Base Case (compare it with normal printing of array using for loop)
+    if(i >= n) return;
+    cout<<arr[i]<<" ";
+    //Recusion says ek print tum kero baki me kerdunga
+    printArrayElement(arr,n,i+1);
+}
+//---------------------------------------------
+void FindMaxElement(vector<int> arr , int n , int i,int& maxi){
+    if(i >= n) return;
+    if(arr[i] > maxi){
+        maxi = arr[i];
+    }
+    FindMaxElement(arr,n,i+1,maxi);
+}
+//--------------------------------------------
+bool FindKeyIsPresent(string str , int n , int i , int key){
+    if(i >= n) return false;
+    if(str[i] == key) return true;
+    return FindKeyIsPresent(str,n,i+1,key);
+}
+//-------------------------------------------
+int IsPresentChar(string str , int n , int i , char key){
+    //Base Case
+    if(i >= n) return -1;
+    if(str[i] == key) return i;
+    return IsPresentChar(str , n , i+1 , key);
+}
+//-------------------------------------------
+void GetAllTheIndexOFKey(string str , int n , int i , char key , vector<int>& arr){
+    if(i >= n) return ;
+    if(str[i] == key){
+        arr.push_back(i);
+    }
+    return GetAllTheIndexOFKey(str,n,i+1,key,arr);
+}
+//------------------------------------------
+void PrintAllDigit(int num , vector<int>& arr){
+    if(num == 0) return ;
+    int rem = num % 10;
+    arr.push_back(rem);
+    num = num / 10;
+    return PrintAllDigit(num , arr);
+}
+//------------------------------------------
+
 
 
 int main(){
@@ -68,6 +125,66 @@ int main(){
     
     //! Recursion Level-2
 
-  
+// 6. Climb Staires (This is qus is very similar or we can say same as fibonacci series okk)
+    // int n = 3;
+    // int ans = climbStaires(n);
+    // cout<<ans;
+
+// 7. Print all elements of Array using Recursion?
+        // vector<int> arr = {10,20,30,40,50};
+        // int n = arr.size();
+        // int i = 0;
+        // printArrayElement(arr, n , i);
+ 
+// 8. Find Max Element in Array using Recusion?
+    // vector<int> arr = {10,21,11,42,22,12};
+    // int n = arr.size();
+    // int i = 0;
+    // int maxi = INT_MIN;
+    // FindMaxElement(arr,n,i,maxi);   
+    // cout<<maxi;
+    
+    //!Note : String me char find kerne wale qus ke niche maine 3 varity ke qus(9,10,11) kiye hai okk!!!
+// 9. Find char in String using Recursion?
+    //    string str = "himanshu";
+    //    char key = 'h';
+    //    int i = 0;
+    //    int n = str.length();
+    //     if(FindKeyIsPresent(str,n,i,key)){
+    //         cout<<"Key is Present";
+    //     }else{
+    //         cout<<"Key is Not Present";
+    //     }
+       
+// 10. Check whether the Char present In String or Not and -->return Index?
+    // string str = "himanshu";
+    // int n = str.length();
+    // int i = 0;
+    // char key = 'x';
+    // int ans = IsPresentChar(str,n,i,key);
+    // cout<<ans;
+
+// 11. Check wheter the Char present in string and How many times -->print all Indexes Return in Array?
+        // string str = "abcbdbebfb";
+        // int n = str.length();
+        // int i = 0;
+        // char key = 'b';
+        // vector<int> arr;
+        // GetAllTheIndexOFKey(str,n,i,key,arr);
+        // for(auto ele : arr){
+        //     cout<<ele<<" ";
+        // }
+
+// 12. Print All Digit of Number?
+        // int num = 435;
+        // vector<int> arr;
+        // PrintAllDigit(num,arr);
+        // reverse(arr.begin(), arr.end());
+        // for(auto it : arr){
+        //     cout<<it<<" ";
+        // }
+ 
+
+
     return 0;
 } 
