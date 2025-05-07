@@ -2,7 +2,7 @@
 //! Important Note:
     // -->Recursion qus kerne se pahle simple tarike se solve kerne ka socha ker thekk hai 
     // -->Base case ka socha ker 80% sol mil jayega
-
+    // -->Bus Loop ke jagah function use kerna shuru ker diya think like that!!
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -88,11 +88,46 @@ void PrintAllDigit(int num , vector<int>& arr){
     return PrintAllDigit(num , arr);
 }
 //------------------------------------------
+bool CheckIsSorted(vector<int> &arr , int n , int i){ 
+    if(i >= n) return true;
+    if(arr[i] < arr[i-1]){
+        return false;
+    }
+    return CheckIsSorted(arr,n,i+1);
+}
+//-----------------------------------------
+int BSrecursion(vector<int> &arr , int s , int e, int target){
+    if(s > e) return -1;
+    int mid = (s+e)/2;
+    if(arr[mid] == target){
+        return mid;
+    }
+    if(arr[mid] < target){
+       return BSrecursion(arr,mid+1,e,target);
+    }else{
+        return BSrecursion(arr,s,mid-1,target);
+    }
+}
+//-----------------------------------------
+void printAllSubstring(string str , string output, int i, vector<string>& ans ){
+    //Base case
+    if(i >= str.length()){//jub subhi i pointer at last str.length se bade ho jayenge to print each output
+        ans.push_back(output);
+        return;
+    }
+    // Exclude
+    printAllSubstring(str , output , i+1,ans);
+    //Include
+    output = output + str[i];
+    printAllSubstring(str,output , i+1,ans);
+}
+//-----------------------------------------
 
 
 
 int main(){
     //! Recursion Level-1 
+
     // Note : Yai jo niche 4 qus hai yai bhi ho sakte hai recursion Baki jo lecture me hua hai vo niche solve hai
 // you have a number given you have to print the all digits of that number 
 // find min and max number in the array using recursion
@@ -145,7 +180,8 @@ int main(){
     // cout<<maxi;
     
     //!Note : String me char find kerne wale qus ke niche maine 3 varity ke qus(9,10,11) kiye hai okk!!!
-// 9. Find char in String using Recursion?
+
+    // 9. Find char in String using Recursion?
     //    string str = "himanshu";
     //    char key = 'h';
     //    int i = 0;
@@ -184,7 +220,40 @@ int main(){
         //     cout<<it<<" ";
         // }
  
+        //! Recursion Level-3
 
+// 13. Check Give Array is Sorted or Not?
+        // vector<int> arr = {1,2,3,4,5,6,7};
+        // int i = 1;
+        // int n = arr.size();
+        // if(CheckIsSorted(arr,n,i)){
+        //     cout<<"Sorted";
+        // }else{
+        //     cout<<"UnSorted";
+        // }
+
+// 14. Search Element in Array using Binary Search (Recursion)? 
+        // vector<int> arr = {2,4,6,8,10,12,14,16};
+        // int target = 12;
+        // int s = 0;
+        // int e = arr.size()-1;
+        // int ans = BSrecursion(arr,s,e,target);
+        // cout<<ans;
+
+// 15. Find all Possible Substring of a string using Recusion (method - Includign/Excluding)?
+    // string str = "abc";
+    // string output = "";
+    // int i = 0 ;
+    // vector<string> ans;
+    // printAllSubstring(str,output,i,ans);
+    // for(auto it : ans){
+    //     cout<<it<<endl;
+    // }
+
+        //! Recursion Level-4
+
+// 16. 
 
     return 0;
+
 } 
