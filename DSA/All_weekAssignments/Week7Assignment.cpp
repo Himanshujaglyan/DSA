@@ -122,7 +122,26 @@ void printAllSubstring(string str , string output, int i, vector<string>& ans ){
     printAllSubstring(str,output , i+1,ans);
 }
 //-----------------------------------------
+int FindMiniElementCount(vector<int>& arr , int target ){
+    //Base case
+    if(target == 0){
+        return 0;
+    }
+    if(target < 0){
+        return INT_MAX;
+    }
+    int mini = INT_MAX;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        int ans = FindMiniElementCount(arr, target-arr[i]);
+        if(ans != INT_MAX){
+        mini = min(mini , ans + 1);
+        }
+    }
 
+return mini;
+}
+//----------------------------------------
 
 
 int main(){
@@ -250,10 +269,15 @@ int main(){
     //     cout<<it<<endl;
     // }
 
-        //! Recursion Level-4
+        //! Recursion Level-4 (Note : yai 16 qus muje etna acche se clear nahi hua hai )
 
-// 16. 
-
+// 16. Find Minimum element required of an Array whose sum is equal to Target
+    // vector<int> arr = {1,2};
+    // int target = 5;
+    // int ans = FindMiniElementCount(arr,target);
+    // cout<<ans;
+ 
+// 17. 
     return 0;
 
 } 
