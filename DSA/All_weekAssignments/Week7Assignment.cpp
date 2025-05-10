@@ -141,8 +141,36 @@ int MinCoinRequired(vector<int>& arr , int target){
     return mini;
 }
 //----------------------------------------
+int FindMaxCutOf_Rod(int n , int x, int y , int z){
+    // Base case
+    if(n == 0){
+        return 0;
+    }
+    if(n < 0 ){
+        return INT_MIN;
+    }
+    int ans1 = FindMaxCutOf_Rod(n-x,x,y,z) + 1; //here each +1 denotes to bachi hui road means ager ek function se ek side ke road ka ans nikal rahe hai to + 1 dusri rod ko represent ker rahi hai;
+    int ans2 = FindMaxCutOf_Rod(n-y,x,y,z) + 1;
+    int ans3 = FindMaxCutOf_Rod(n-z,x,y,z) + 1;
 
+    int ans = max(ans1 , max(ans2 , ans3));
 
+    return ans;
+}
+//-----------------------------------------
+void FindMaxSumOfNon_Adjacent(vector<int> &arr , int i , int sum , int &maxi){
+    //Base case
+    if(i >= arr.size()){
+        maxi = max(sum , maxi);
+        return;
+    }
+
+    //Include
+    FindMaxSumOfNon_Adjacent(arr , i+2 , sum + arr[i] , maxi );
+    //Exclude   
+    FindMaxSumOfNon_Adjacent(arr , i+1 ,  sum , maxi);
+}
+//-----------------------------------------
 
 
 
@@ -281,7 +309,24 @@ int main(){
         // int ans = MinCoinRequired(arr,target);    
         // cout<<ans;      
 
-// 17. 
-    return 0;
+// 17. Cut Maximum segment of Rod (Metal Rod cutting Problem)?
+        // int n = 7;
+        // int x = 5, y = 2,z = 2 ; 
+        // int ans = FindMaxCutOf_Rod(n,x,y,z);
+        // if(ans < 0){
+        //     ans = 0;
+        // }  
+        // cout<<"Maximum cut of Metal Rod is : "<< ans;
+
+// 18. Maximum sum of Non-Adjacent Element of array using Recursion (Method:- Including/Excluding)
+        // vector<int> arr = {2,1,4,9};
+        // int maxi = INT_MIN;
+        // int sum = 0 ;
+        // int i =  0;
+        // FindMaxSumOfNon_Adjacent(arr,i, sum , maxi);
+        // cout<<maxi;     
+
+
+return 0;
 
 } 
