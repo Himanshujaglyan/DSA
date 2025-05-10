@@ -171,9 +171,16 @@ void FindMaxSumOfNon_Adjacent(vector<int> &arr , int i , int sum , int &maxi){
     FindMaxSumOfNon_Adjacent(arr , i+1 ,  sum , maxi);
 }
 //-----------------------------------------
+int Find_LastOccOFChar(string &str , char &target , int i){
+    //Base case
+    if(i < 0) return -1;
 
-
-
+    if(str[i] == target){
+        return i;
+    }
+    Find_LastOccOFChar(str,target , i-1);
+}
+//-----------------------------------------
 
 
 int main(){
@@ -326,7 +333,16 @@ int main(){
         // FindMaxSumOfNon_Adjacent(arr,i, sum , maxi);
         // cout<<maxi;     
 
+        //! Recursion 13 Assignment QUS :-
+    
+// Qus1. Last Occurence of a Character?
+    // string str = "abcddedg";
+    // char target = 'd';
+    // int i = str.length()-1;
+    // int ans = Find_LastOccOFChar(str,target,i);
+    // cout<<"Last Occurence of "<<target<<" is "<<ans;
 
+// Qus2. ----qus 96 ans 97 done kerna according to you strtegy
 return 0;
 
 } 
