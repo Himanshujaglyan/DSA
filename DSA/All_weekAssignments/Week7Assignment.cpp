@@ -181,6 +181,35 @@ int Find_LastOccOFChar(string &str , char &target , int i){
     Find_LastOccOFChar(str,target , i-1);
 }
 //-----------------------------------------
+void ReverseString(string &str , int start , int end){
+    if(start > end){
+        return;
+    }
+    swap(str[start],str[end]);
+    ReverseString(str,start+1 , end-1);
+}
+//-----------------------------------------
+void AddingTwoString(string& num1 , int p1 , string& num2 , int p2 , int carry , string& ans){
+        //Base Case
+        if(p1 < 0 && p2 < 0){
+            if(carry != 0)
+            ans.push_back(carry + '0');
+            return;
+        }
+
+        int n1 = ((p1 >= 0)? num1[p1] : '0') - '0'; // bus pointer ko handle kiya hai ke kam jada value ke case me garbage value na aayue for example - "12" + "123"
+        int n2 = ((p2 >= 0)? num2[p2] : '0') - '0';
+        int sum = n1 + n2 + carry;
+        int digit = sum % 10;
+        carry = sum / 10;
+         
+        ans.push_back(digit + '0');
+
+        AddingTwoString(num1 , p1-1 , num2 , p2-1 , carry , ans);
+}
+//-----------------------------------------
+
+
 
 
 int main(){
@@ -342,7 +371,31 @@ int main(){
     // int ans = Find_LastOccOFChar(str,target,i);
     // cout<<"Last Occurence of "<<target<<" is "<<ans;
 
-// Qus2. ----qus 96 ans 97 done kerna according to you strtegy
-return 0;
+// Qus2. Reverse a String Using Recursion?
+    // string str = "himanshu";
+    // int start = 0; 
+    // int end = str.length()-1;
+    // ReverseString(str,start,end);
+    // cout<<str;
+
+// Qus3. Adding Two String using Recursion (Leetcode - 415)
+        // string num1 = "23";
+        // string num2 = "329";
+        // string ans = "";
+        // int p1 = num1.length()-1;
+        // int p2 = num2.length()-1;
+        // int carry = 0;
+        // AddingTwoString(num1 , p1 , num2 , p2 , carry , ans );
+        // reverse(ans.begin(), ans.end());
+        // cout<<ans;       
+        // int i = 10;
+        // char s = i + '0';
+        // cout<<s;
+ 
+// ab qus 98 and 99 kerna hai rule ke according
+        
+        
+        
+        return 0;
 
 } 
