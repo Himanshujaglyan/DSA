@@ -208,8 +208,35 @@ void AddingTwoString(string& num1 , int p1 , string& num2 , int p2 , int carry ,
         AddingTwoString(num1 , p1-1 , num2 , p2-1 , carry , ans);
 }
 //-----------------------------------------
+bool CheckPalindrome(string &str , int i , int j){
+    //Base case
+    if(i >= j){
+        return  true;
+    }
 
+    if(str[i] != str[j]){
+        return false;
+    }
+    CheckPalindrome(str,i+1,j-1);
+}
+//-----------------------------------------
+void RemoveAllOccurenceOfSubstring(string &str , string &part , int i){
+    //Base case
+    if(i >= str.length() - part.length()){
+        return;
+    }
 
+    int pos = str.find(part);
+    if(pos != string::npos){
+        // str.erase(pos , part.length());
+        // =========OR (you can do without erase method also)============
+        string left_str = str.substr(0,pos);
+        string right_str = str.substr(pos + part.size() , str.size());
+        str = left_str + right_str;
+    }
+    RemoveAllOccurenceOfSubstring(str , part , i+1);
+}
+//-----------------------------------------
 
 
 int main(){
@@ -392,8 +419,21 @@ int main(){
         // char s = i + '0';
         // cout<<s;
  
-// ab qus 98 and 99 kerna hai rule ke according
+// Qus4. Check Palindrome using Recursion?
+        // string str = "madam";
+        // int i = 0 , j = str.length()-1;
+        // if(CheckPalindrome(str,i,j)){
+        //     cout<<"Yes Palindrome!";
+        // }else{
+        //     cout<<"Not Palindrome!";
+        // }
         
+// Qus4. Remove All Occurences of String?
+        string str = "daabcbaabcbc";
+        string part = "abc";
+        int i= 0;
+        RemoveAllOccurenceOfSubstring(str , part , i);   
+        cout<<str;
         
         
         return 0;
