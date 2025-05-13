@@ -320,31 +320,51 @@ void RemoveAllOccurenceOfSubstring(string &str, string &part, int i)
     RemoveAllOccurenceOfSubstring(str, part, i + 1);
 }
 //-----------------------------------------
-void FindAllSubarray_Recursion(vector<int> &arr , int start , int end){
-    //Base case
-    if(end == arr.size()){
+void FindAllSubarray_Recursion(vector<int> &arr, int start, int end)
+{
+    // Base case
+    if (end == arr.size())
+    {
         return;
     }
 
-    for(int i = start ; i <= end ; i++){    
-        cout<<arr[i]<<" ";
+    for (int i = start; i <= end; i++)
+    {
+        cout << arr[i] << " ";
     }
-    cout<<endl;
+    cout << endl;
 
-    FindAllSubarray_Recursion(arr , start , end+1);
-
+    FindAllSubarray_Recursion(arr, start, end + 1);
 }
-void FindAllSubstring(vector<int>& arr){
+void FindAllSubstring(vector<int> &arr)
+{
     for (int start = 0; start < arr.size(); start++)
-    {   
+    {
         int end = start;
-        FindAllSubarray_Recursion(arr , start , end);
+        FindAllSubarray_Recursion(arr, start, end);
     }
-    
 }
 //-----------------------------------------
+void BuyAndSell(vector<int> &arr, int &BuyPrice, int &profit, int i)
+{
+    // Base case
+    if (i >= arr.size())
+    {
+        return;
+    }
+    // ek kaam mene kiya baki recursion karega!
+    if (arr[i] < BuyPrice)
+    {
+        BuyPrice = arr[i];
+    }
+    else if (arr[i] - BuyPrice > profit)
+    {
+        profit = arr[i] - BuyPrice;
+    }
 
-
+    BuyAndSell(arr, BuyPrice, profit, i + 1);
+}
+//-----------------------------------------
 
 int main()
 {
@@ -560,9 +580,17 @@ int main()
     // cout<<str;
 
     // Qus5. Print All Subarray using Recursion? (Did you know diff between SubSequence and Subarray see in my DSA third notebook black color first page)
-        vector<int> arr = {1, 2, 3,4,5};
-        FindAllSubstring(arr);    
-    
-    
+    // vector<int> arr = {1, 2, 3,4,5};
+    // FindAllSubstring(arr);
+
+    // Qus6. Buy and Sell Stocks using Recursion?
+    // vector<int> arr = {7,1,5,3,6,4};
+    // int BuyPrice = INT_MAX;
+    // int profit = 0;
+    // int i = 0 ;
+    // BuyAndSell(arr , BuyPrice , profit , i);
+    // cout<<profit;
+
+    // Qus7. 
     return 0;
 }
