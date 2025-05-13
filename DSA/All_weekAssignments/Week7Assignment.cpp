@@ -365,6 +365,24 @@ void BuyAndSell(vector<int> &arr, int &BuyPrice, int &profit, int i)
     BuyAndSell(arr, BuyPrice, profit, i + 1);
 }
 //-----------------------------------------
+void FindMaxAmount_RObbed(vector<int> &arr , int i , int sum , int &maxi){
+    //base case
+    if(i >= arr.size()){
+        maxi = max(sum , maxi);
+        return;
+    }
+    //Include
+    FindMaxAmount_RObbed(arr , i+2 , sum+arr[i], maxi);
+    //Exclude
+    FindMaxAmount_RObbed(arr , i+1 , sum , maxi);
+}
+//-----------------------------------------
+
+
+
+
+
+
 
 int main()
 {
@@ -591,6 +609,14 @@ int main()
     // BuyAndSell(arr , BuyPrice , profit , i);
     // cout<<profit;
 
-    // Qus7. 
-    return 0;
+    // Qus7. House Rober (Leetcode - 198) // same wahi concept or sol hai level 4 je last qus wala Max nikalte hai jisme(Including/excluding)
+        // vector<int> arr = {2,1,4,9};
+        // int sum = 0 ;
+        // int maxi = INT_MIN;
+        // int i = 0;
+        // FindMaxAmount_RObbed(arr , i , sum , maxi); 
+        // cout<<maxi;
+        
+    // Qus8. 
+        return 0;
 }
