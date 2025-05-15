@@ -365,22 +365,33 @@ void BuyAndSell(vector<int> &arr, int &BuyPrice, int &profit, int i)
     BuyAndSell(arr, BuyPrice, profit, i + 1);
 }
 //-----------------------------------------
-void FindMaxAmount_RObbed(vector<int> &arr , int i , int sum , int &maxi){
-    //base case
-    if(i >= arr.size()){
-        maxi = max(sum , maxi);
+void FindMaxAmount_RObbed(vector<int> &arr, int i, int sum, int &maxi)
+{
+    // base case
+    if (i >= arr.size())
+    {
+        maxi = max(sum, maxi);
         return;
     }
-    //Include
-    FindMaxAmount_RObbed(arr , i+2 , sum+arr[i], maxi);
-    //Exclude
-    FindMaxAmount_RObbed(arr , i+1 , sum , maxi);
+    // Include
+    FindMaxAmount_RObbed(arr, i + 2, sum + arr[i], maxi);
+    // Exclude
+    FindMaxAmount_RObbed(arr, i + 1, sum, maxi);
 }
 //-----------------------------------------
-
-
-
-
+int Josephus(int n, int k)
+{
+    // Base case (ager last me ek person bacha to return zero)
+    if (n == 1)
+    {
+        return 0;
+    }
+    else
+    {
+        return (Josephus(n - 1, k) + k) % n;
+    }
+}
+//-----------------------------------------
 
 
 
@@ -610,13 +621,21 @@ int main()
     // cout<<profit;
 
     // Qus7. House Rober (Leetcode - 198) // same wahi concept or sol hai level 4 je last qus wala Max nikalte hai jisme(Including/excluding)
-        // vector<int> arr = {2,1,4,9};
-        // int sum = 0 ;
-        // int maxi = INT_MIN;
-        // int i = 0;
-        // FindMaxAmount_RObbed(arr , i , sum , maxi); 
-        // cout<<maxi;
-        
-    // Qus8. 
-        return 0;
+    // vector<int> arr = {2,1,4,9};
+    // int sum = 0 ;
+    // int maxi = INT_MIN;
+    // int i = 0;
+    // FindMaxAmount_RObbed(arr , i , sum , maxi);
+    // cout<<maxi;
+
+    // Qus8.Extra Josephus Problem ? (understand by Anuj Bhaiya)?
+    // Problem yai hai ke merko apne se third person ko marna hai jo one line solution hai eska
+    // int persons = 7;
+    // int killat = 3;
+    // int ans = Josephus(persons , killat);
+    // cout<<ans;//Kis position pe baitha aadmi aakhri mein bachega.
+
+
+
+    return 0;
 }
