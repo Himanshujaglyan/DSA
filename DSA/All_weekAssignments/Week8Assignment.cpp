@@ -1,4 +1,4 @@
-//! Divide & Conquer
+//! Divide & Conquer (Backtracking)
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -71,36 +71,49 @@ void MergeSort(vector<int> &arr, int start, int end)
 int PiviotPosition(vector<int> &arr, int start, int end)
 {
     // Consider Pivot Element
-    int piviotIndex = 0;
-    int piviotElement = arr[0];
+    int piviotIndex = start;
+    int piviotElement = arr[start];
 
     // Find Right Position where we have to place our piviot Element
     int count = 0;
-    for (int i = 1; i < arr.size(); i++)
+    for (int i = start+1; i < arr.size(); i++)
     {
-        arr[i] < piviotElement;
+        if(arr[i] <= piviotElement)//equal ho tub bhi chalega
         count++;
     }
     // Right Possition where piviot will come
     int rightIndex = start+count;
-    swap(arr[rightIndex] , arr[piviotElement]);
+    swap(arr[rightIndex] ,arr[piviotIndex]);
+    piviotIndex = rightIndex;
 
+
+
+    int i = start;
+    int j = end;
     //Now piviot ek possition per set ho gaya hai ab left me saare piviot se smaller rakhenge and right me piviot se bade rakhenge
-    while(){
-        //Note : ek baar revise kerke dubara solve kerio khud se kal
+    while(i < piviotIndex && j > piviotIndex){
+        //ab hum check ker rahe hai ke left side me saare small element hai na to I++
+        while(arr[i] <= piviotElement){
+            i++;
+        }
+        while(arr[j] > piviotElement){
+            j--;
+        }
+
+        if(i < piviotIndex && j > piviotIndex){
+            swap(arr[i++],arr[j--]);
+        }
     }
-
+    return piviotIndex;
 }
-
-
-    void quickSort(vector<int> & arr, int start, int end)
+//----------------------------------------------------
+void quickSort(vector<int> &arr, int start, int end)
     {
         // Base case
         if (start >= end)
         {
             return;
         }
-
         // Place Piviot element at that position where all element on left of Pivot is smaller than the Pivot and on right side all or larger than the Pivot
         int p = PiviotPosition(arr, start, end);
 
@@ -110,10 +123,29 @@ int PiviotPosition(vector<int> &arr, int start, int end)
         // Now sort the right part of array after the Pivot Element
         quickSort(arr, p + 1, end);
     }
+                
+                //! Backtracking
+void Permutation(string &str , int i){
+    //Base case 
+    if(i >= str.length()){
+        cout<<str<<endl;
+        return;
+    }
 
-    int main()
-    {
+    for(int j = i ; j < str.length() ; j++){
+        swap(str[i] , str[j]);
 
+        //Recursion (for loop ke ander hi kuki j her ek i ke liye swap hoga na)
+        Permutation(str , i+1);
+
+        //Backtracking
+        swap(str[i],str[j]);// ager hum by reference str ko pass ker rahe hai to usse orignal string update ho rahi hai sirf esi liye hamne backtracking ka use kerke orignal string ko dubara bana dea hai lekin ager hum ager reference pass na kare to backtracking ke bhi need nahi hai!!
+    }
+} 
+//----------------------------------------------------
+
+
+    int main(){
         // 1. Merge Sort
         //  vector<int> arr = {38,27,43,3,9,20}; //output: 3,9,20,27,38,43
         //  int start = 0;
@@ -125,14 +157,25 @@ int PiviotPosition(vector<int> &arr, int start, int end)
         //      cout<<arr[i]<<" ";
         //  }
 
-        
         // 2. Qucik Sort
-        vector<int> arr = {8, 1, 3, 4, 20, 30, 40};
-        int start = 0;
-        int end = arr.size();
-        quickSort(arr, start, end);
+        // vector<int> arr = {8, 1, 3, 4, 20,20, 30,0, 40};
+        // int start = 0;
+        // int end = arr.size()-1;
+        // quickSort(arr, start, end);
+        // for (int i = 0; i < arr.size(); i++)
+        // {
+        //     cout<<arr[i]<<" ";
+        // }
+        
+        //! Backtracking
 
-        return 0;
+        // Qus1 : Print All Possible Permutation of String?
+            // string str = "abc";
+            // int i = 0;
+            // Permutation(str , i);
+        
+           
+            return 0;
     }
 
     // Note es qus me problem hai kal khud se aake debud kerio without any help!!
