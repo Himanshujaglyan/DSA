@@ -127,7 +127,8 @@ void quickSort(vector<int> &arr, int start, int end)
 }
 
 //! Backtracking
-void Permutation(string &str, int i){
+void Permutation(string &str, int i)
+{
     // Base case
     if (i >= str.length())
     {
@@ -147,51 +148,125 @@ void Permutation(string &str, int i){
     }
 }
 //----------------------------------------------------
-bool isSafe(vector<vector<int>>& arr , int row , int col , int i , int j , vector<vector<bool>>& visited){
-    //Not yaha safe ka matlb hum 3 cheeze check kerange ke arr per 1 hai or saath hi visited array per false ho ke kabhi visit nahi kiya and out of bound na ho 
-    if(((i > 0 && i < row) && (j > 0 && j < col)) && (arr[i][j] == 1) && (visited[i][j] == false)){
+bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited)
+{
+    if ((i >= 0 && i < row) && (j >= 0 && j < col) && (arr[i][j] == 1) && (visited[i][j] == false))
+    {
         return true;
-    }else{
+    }
+    else
+    {
         return false;
     }
 }
-void FindPathInMaze(vector<vector<int>>& arr , int row , int col , int i , int j , vector<vector<bool>>& visited , vector<string>& path , string output){
-    //Base case (jub destination per pahuch jayenge)
-    if(i > row-1 && j > col-1){
+void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited, vector<string> &path, string output)
+{
+    // Base case
+    if (i == row - 1 && j == col - 1)
+    {
         path.push_back(output);
         return;
     }
 
-    //Now find Rat movement (Down , Left , Right , Up)
-    //Down-> (i+1,j)
-    if(isSafe(arr,row,col,i+1,j,visited)){
-        visited[i+1][j] = true;
-        FindPathInMaze(arr , row , col , i+1 , j ,visited, path , output+'D');
-        //Backtracking (because ek path sirf hame ek string dega or es multiple stirng ho sakte hai esliye hum jun kaam ho jayega to dubara false ker rahe hai visited array me)
-        visited[i+1][j] = false;
+    // Down -->(i+1 , j)
+    if (isSafe(arr, row, col, i + 1, j, visited))
+    {
+        visited[i + 1][j] = true;
+        FindPathInMaze(arr, row, col, i + 1, j, visited, path, output + 'D');
+        // Backtrack
+        visited[i + 1][j] = false;
     }
-    //Left-> (i,j-1)
-    if(isSafe(arr,row,col,i,j-1,visited)){
-        visited[i][j-1] = true;
-        FindPathInMaze(arr , row , col , i , j-1 ,visited, path , output+'L');
-        //Backtracking (because ek path sirf hame ek string dega or es multiple stirng ho sakte hai esliye hum jun kaam ho jayega to dubara false ker rahe hai visited array me)
-        visited[i][j-1] = false;
+    // Left -->(i , j-1)
+    if (isSafe(arr, row, col, i, j - 1, visited))
+    {
+        visited[i][j - 1] = true;
+        FindPathInMaze(arr, row, col, i, j - 1, visited, path, output + 'L');
+        // Backtrack
+        visited[i][j - 1] = false;
     }
-    //Right-> (i,j+1)
-    if(isSafe(arr,row,col,i,j+1,visited)){
-        visited[i][j+1] = true;
-        FindPathInMaze(arr , row , col , i , j+1 ,visited, path , output+'R');
-        //Backtracking (because ek path sirf hame ek string dega or es multiple stirng ho sakte hai esliye hum jun kaam ho jayega to dubara false ker rahe hai visited array me)
-        visited[i][j+1] = false;
+
+    // Right -->(i,j+1)
+    if (isSafe(arr, row, col, i, j + 1, visited))
+    {
+        visited[i][j + 1] = true;
+        FindPathInMaze(arr, row, col, i, j + 1, visited, path, output + 'R');
+        // Backtrack
+        visited[i][j + 1] = false;
     }
-    //Up-> (i-1,j)
-    if(isSafe(arr,row,col,i-1,j,visited)){
-        visited[i-1][j] = true;
-        FindPathInMaze(arr , row , col , i-1 , j ,visited, path , output+'U');
-        //Backtracking (because ek path sirf hame ek string dega or es multiple stirng ho sakte hai esliye hum jun kaam ho jayega to dubara false ker rahe hai visited array me)
-        visited[i-1][j] = false;
+
+    // Up -->(i-1 , j)
+    if (isSafe(arr, row, col, i - 1, j, visited))
+    {
+        visited[i - 1][j] = true;
+        FindPathInMaze(arr, row, col, i - 1, j, visited, path, output + 'U');
+        // Backtrack
+        visited[i - 1][j] = false;
     }
 }
+//----------------------------------------------------
+void PrintAllArrayWithPossibleQueenPossition(vector<vector<char>>& arr , int n){
+    for (int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n ;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl<<endl;
+}
+bool isSafe(vector<vector<char>>& arr , int n , int row , int col){
+    //Bhai baat esi hai muje apne piche wale se hi to check kerna hai ke piche wale col me queen attack na ker de!!
+    
+    //Left Row
+    int i = row;
+    int j = col - 1;
+    while(j >= 0){
+        if(arr[i][j] == 'Q'){
+            return false; // left row me merko queen mil gayi to ma kah dunga merko khatra hai yaha 
+        }
+        j--;
+    }
+    //upper Left Diagonal
+     i = row - 1;
+     j = col - 1;
+     while(i >= 0 && j >= 0){
+        if(arr[i][j] == 'Q'){
+            return false;
+        }
+        i--,j--;
+     }
+    //Lower lef Diagonal
+    i = row + 1;
+    j = col - 1;
+    while(i < n && j >= 0){
+        if(arr[i][j] == 'Q'){
+            return false;
+        }
+    i++,j--;
+    }
+
+    return true;
+
+}
+void PlaceAllQueens(vector<vector<char>>& arr , int n , int col){
+    //Base case (jub col hi kahtam ho jayenge yani or queen ko place ne kerna)
+    if(col >= n){
+        PrintAllArrayWithPossibleQueenPossition(arr , n);
+        return;
+    }
+    //Place queen at correct possition where previous queens not attack
+    for(int row = 0 ; row < n ; row++){
+        if(isSafe(arr,n,row,col)){
+            arr[row][col] = 'Q';
+            PlaceAllQueens(arr,n,col+1);
+            //Backtracking
+            arr[row][col] = '-';// taki next possible way nikal sake queens ko palce kerne ka!
+        }
+    }
+
+}
+//-----------------------------------------------------
+
 
 
 int main()
@@ -225,24 +300,26 @@ int main()
     // Permutation(str , i);
 
     // Qus2 : Rat in a Maze?
-    vector<vector<int>> arr = {{1,0,0}, {1,1,0}, {1,1,1}};
-    int row = 3;
-    int col = 3;
-    //ab visited array banaya jisme sirf pahle wale ko chodke subko true ker denge
-    vector<vector<bool>> visited(row , vector<bool>(col,false));
-    visited[0][0] = true;
-    //path string array banayenge jisme sabhi path honge
-    vector<string> path;
-    string output = "";
+    // vector<vector<int>> arr = {{1,0,0},{1,1,0},{1,1,1}};
+    // int row = 3;
+    // int col = 3;
+    // vector<vector<bool>> visited(row,vector<bool>(col,false));
+    // visited[0][0] = true;
+    // vector<string> path;
+    // string output = "";
+    // FindPathInMaze(arr , row , col ,0 , 0 , visited ,path , output);
+    // for(auto it : path){
+    //     cout<<it<<endl;
+    // }
 
-    FindPathInMaze(arr , row , col , 0,0, visited , path , output);
-    cout<<"Output"<<endl;
-    for(auto str : path){
-        cout<<str<<endl;
+    // Qus3 : N-Queens
+        // int n = 4;
+        // vector<vector<char>> arr(n , vector<char>(n,'-'));//initialy sabhi position ko 0 ker dea hai means abhi koi queen palce nahi hai
+        // int col = 0;
+        // PlaceAllQueens(arr , n , col);
+    
+    
+        return 0;
+    //Note kal aake dekhio ke map ke saath kya ker rah ahai vo kuki cahe implement na kerio per
+       // ek thought process milega code ke saath khelne ka
     }
-
-    return 0;
-}
-
-
-Note es Rat wale qus me problem hai esko kal dekhte hai aake!!
