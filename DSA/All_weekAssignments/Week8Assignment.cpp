@@ -127,8 +127,7 @@ void quickSort(vector<int> &arr, int start, int end)
 }
 
 //! Backtracking
-void Permutation(string &str, int i)
-{
+void Permutation(string &str, int i){
     // Base case
     if (i >= str.length())
     {
@@ -148,8 +147,7 @@ void Permutation(string &str, int i)
     }
 }
 //----------------------------------------------------
-bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited)
-{
+bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited){
     if ((i >= 0 && i < row) && (j >= 0 && j < col) && (arr[i][j] == 1) && (visited[i][j] == false))
     {
         return true;
@@ -159,8 +157,7 @@ bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vec
         return false;
     }
 }
-void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited, vector<string> &path, string output)
-{
+void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited, vector<string> &path, string output){
     // Base case
     if (i == row - 1 && j == col - 1)
     {
@@ -265,8 +262,31 @@ void PlaceAllQueens(vector<vector<char>>& arr , int n , int col){
     }
 
 }
-//-----------------------------------------------------
 
+//-----------------------------------------------------
+void GenerateAllPossibleParenthesis(vector<string>& ans , int open , int close , string output){
+    //Base case
+    if(open == 0 && close == 0){
+        ans.push_back(output);
+        return;
+    }
+
+    //Include open bracket
+    if(open > 0){
+        output.push_back('(');
+        GenerateAllPossibleParenthesis(ans,open-1,close,output);
+        //Backtracking
+        output.pop_back();
+    }
+        //Include close bracket
+        if(close > open){
+            output.push_back(')');
+            GenerateAllPossibleParenthesis(ans,open,close-1,output);
+            //Backracking
+            output.pop_back();
+        }   
+    }
+//----------------------------------------------------
 
 
 int main()
@@ -312,14 +332,26 @@ int main()
     //     cout<<it<<endl;
     // }
 
-    // Qus3 : N-Queens
+    // Qus3 : N-Queens (leetcode 51)
         // int n = 4;
         // vector<vector<char>> arr(n , vector<char>(n,'-'));//initialy sabhi position ko 0 ker dea hai means abhi koi queen palce nahi hai
         // int col = 0;
         // PlaceAllQueens(arr , n , col);
     
+    // Qus4 : Generate Parenthesis (Leetcode - 22) Note: es qus bus ek cheeze ajib hai jub close>end kerte hai 
+    // int n = 2;
+    // vector<string> ans;
+    // string output = "";
+    // int open = n;
+    // int close = n;
+    // GenerateAllPossibleParenthesis(ans,open,close,output);
+    // for(auto it : ans){
+    //         cout<<it<<endl;
+    // }
+        
     
-        return 0;
-    //Note kal aake dekhio ke map ke saath kya ker rah ahai vo kuki cahe implement na kerio per
-       // ek thought process milega code ke saath khelne ka
+
+    return 0;
+
+    
     }
