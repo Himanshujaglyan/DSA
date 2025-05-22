@@ -127,7 +127,8 @@ void quickSort(vector<int> &arr, int start, int end)
 }
 
 //! Backtracking
-void Permutation(string &str, int i){
+void Permutation(string &str, int i)
+{
     // Base case
     if (i >= str.length())
     {
@@ -147,7 +148,8 @@ void Permutation(string &str, int i){
     }
 }
 //----------------------------------------------------
-bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited){
+bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited)
+{
     if ((i >= 0 && i < row) && (j >= 0 && j < col) && (arr[i][j] == 1) && (visited[i][j] == false))
     {
         return true;
@@ -157,7 +159,8 @@ bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vec
         return false;
     }
 }
-void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited, vector<string> &path, string output){
+void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited, vector<string> &path, string output)
+{
     // Base case
     if (i == row - 1 && j == col - 1)
     {
@@ -201,92 +204,126 @@ void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, ve
     }
 }
 //----------------------------------------------------
-void PrintAllArrayWithPossibleQueenPossition(vector<vector<char>>& arr , int n){
+void PrintAllArrayWithPossibleQueenPossition(vector<vector<char>> &arr, int n)
+{
     for (int i = 0; i < n; i++)
     {
-        for(int j = 0; j < n ;j++){
-            cout<<arr[i][j]<<" ";
+        for (int j = 0; j < n; j++)
+        {
+            cout << arr[i][j] << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
-    cout<<endl<<endl;
+    cout << endl
+         << endl;
 }
-bool isSafe(vector<vector<char>>& arr , int n , int row , int col){
-    //Bhai baat esi hai muje apne piche wale se hi to check kerna hai ke piche wale col me queen attack na ker de!!
-    
-    //Left Row
+bool isSafe(vector<vector<char>> &arr, int n, int row, int col)
+{
+    // Bhai baat esi hai muje apne piche wale se hi to check kerna hai ke piche wale col me queen attack na ker de!!
+
+    // Left Row
     int i = row;
     int j = col - 1;
-    while(j >= 0){
-        if(arr[i][j] == 'Q'){
-            return false; // left row me merko queen mil gayi to ma kah dunga merko khatra hai yaha 
+    while (j >= 0)
+    {
+        if (arr[i][j] == 'Q')
+        {
+            return false; // left row me merko queen mil gayi to ma kah dunga merko khatra hai yaha
         }
         j--;
     }
-    //upper Left Diagonal
-     i = row - 1;
-     j = col - 1;
-     while(i >= 0 && j >= 0){
-        if(arr[i][j] == 'Q'){
+    // upper Left Diagonal
+    i = row - 1;
+    j = col - 1;
+    while (i >= 0 && j >= 0)
+    {
+        if (arr[i][j] == 'Q')
+        {
             return false;
         }
-        i--,j--;
-     }
-    //Lower lef Diagonal
+        i--, j--;
+    }
+    // Lower lef Diagonal
     i = row + 1;
     j = col - 1;
-    while(i < n && j >= 0){
-        if(arr[i][j] == 'Q'){
+    while (i < n && j >= 0)
+    {
+        if (arr[i][j] == 'Q')
+        {
             return false;
         }
-    i++,j--;
+        i++, j--;
     }
 
     return true;
-
 }
-void PlaceAllQueens(vector<vector<char>>& arr , int n , int col){
-    //Base case (jub col hi kahtam ho jayenge yani or queen ko place ne kerna)
-    if(col >= n){
-        PrintAllArrayWithPossibleQueenPossition(arr , n);
+void PlaceAllQueens(vector<vector<char>> &arr, int n, int col)
+{
+    // Base case (jub col hi kahtam ho jayenge yani or queen ko place ne kerna)
+    if (col >= n)
+    {
+        PrintAllArrayWithPossibleQueenPossition(arr, n);
         return;
     }
-    //Place queen at correct possition where previous queens not attack
-    for(int row = 0 ; row < n ; row++){
-        if(isSafe(arr,n,row,col)){
+    // Place queen at correct possition where previous queens not attack
+    for (int row = 0; row < n; row++)
+    {
+        if (isSafe(arr, n, row, col))
+        {
             arr[row][col] = 'Q';
-            PlaceAllQueens(arr,n,col+1);
-            //Backtracking
-            arr[row][col] = '-';// taki next possible way nikal sake queens ko palce kerne ka!
+            PlaceAllQueens(arr, n, col + 1);
+            // Backtracking
+            arr[row][col] = '-'; // taki next possible way nikal sake queens ko palce kerne ka!
         }
     }
-
 }
 
 //-----------------------------------------------------
-void GenerateAllPossibleParenthesis(vector<string>& ans , int open , int close , string output){
-    //Base case
-    if(open == 0 && close == 0){
+void GenerateAllPossibleParenthesis(vector<string> &ans, int open, int close, string output)
+{
+    // Base case
+    if (open == 0 && close == 0)
+    {
         ans.push_back(output);
         return;
     }
 
-    //Include open bracket
-    if(open > 0){
+    // Include open bracket
+    if (open > 0)
+    {
         output.push_back('(');
-        GenerateAllPossibleParenthesis(ans,open-1,close,output);
-        //Backtracking
+        GenerateAllPossibleParenthesis(ans, open - 1, close, output);
+        // Backtracking
         output.pop_back();
     }
-        //Include close bracket
-        if(close > open){
-            output.push_back(')');
-            GenerateAllPossibleParenthesis(ans,open,close-1,output);
-            //Backracking
-            output.pop_back();
-        }   
+    // Include close bracket
+    if (close > open)
+    {
+        output.push_back(')');
+        GenerateAllPossibleParenthesis(ans, open, close - 1, output);
+        // Backracking
+        output.pop_back();
     }
+}
 //----------------------------------------------------
+void FindPossibleCombination(vector<string>&mapping , string digits , vector<string>&ans , string output , int index){
+    //Base case
+    if(index >= digits.length()){
+        ans.push_back(output);
+        return ;
+    }
+
+    int key = digits[index]-'0';//given string me se character ko integer me convert ker de
+    string value = mapping[key];//key ke value jo mapped hai mapping array me usko store ker liya 
+    for(int i = 0 ; i < value.length() ; i++){
+        output.push_back(value[i]);
+        FindPossibleCombination(mapping , digits , ans , output , index+1);
+        //Backtracking
+        output.pop_back();//jub because initially string empty the to hame empty hi bana ke rakhna hai  okk!!
+    }
+}
+//---------------------------------------------------
+
 
 
 int main()
@@ -333,12 +370,12 @@ int main()
     // }
 
     // Qus3 : N-Queens (leetcode 51)
-        // int n = 4;
-        // vector<vector<char>> arr(n , vector<char>(n,'-'));//initialy sabhi position ko 0 ker dea hai means abhi koi queen palce nahi hai
-        // int col = 0;
-        // PlaceAllQueens(arr , n , col);
-    
-    // Qus4 : Generate Parenthesis (Leetcode - 22) Note: es qus bus ek cheeze ajib hai jub close>end kerte hai 
+    // int n = 4;
+    // vector<vector<char>> arr(n , vector<char>(n,'-'));//initialy sabhi position ko 0 ker dea hai means abhi koi queen palce nahi hai
+    // int col = 0;
+    // PlaceAllQueens(arr , n , col);
+
+    // Qus4 : Generate Parenthesis (Leetcode - 22) Note: es qus bus ek cheeze ajib hai jub close>end kerte hai
     // int n = 2;
     // vector<string> ans;
     // string output = "";
@@ -348,11 +385,26 @@ int main()
     // for(auto it : ans){
     //         cout<<it<<endl;
     // }
-        
 
-   
+    // Qus5 : Letter combination of a Phone Number (Leetcode - 17)
+    // string digits = "23";
+    // vector<string> mapping(10);
+    // mapping[2] = "abc";
+    // mapping[3] = "def";
+    // mapping[4] = "ghi";
+    // mapping[5] = "jkl";
+    // mapping[6] = "mno";
+    // mapping[7] = "pqrs";
+    // mapping[8] = "tuv";
+    // mapping[9] = "wxyz";
+    // vector<string> ans;
+    // string output = "";
+    // int index = 0;
+    // FindPossibleCombination(mapping , digits , ans , output , index);
+    // for(auto it : ans){
+    //     cout<<it<<endl;
+    // }
+
 
     return 0;
-
-    
-    }
+}
