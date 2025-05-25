@@ -306,23 +306,86 @@ void GenerateAllPossibleParenthesis(vector<string> &ans, int open, int close, st
     }
 }
 //----------------------------------------------------
-void FindPossibleCombination(vector<string>&mapping , string digits , vector<string>&ans , string output , int index){
-    //Base case
-    if(index >= digits.length()){
+void FindPossibleCombination(vector<string> &mapping, string digits, vector<string> &ans, string output, int index)
+{
+    // Base case
+    if (index >= digits.length())
+    {
         ans.push_back(output);
-        return ;
+        return;
     }
 
-    int key = digits[index]-'0';//given string me se character ko integer me convert ker de
-    string value = mapping[key];//key ke value jo mapped hai mapping array me usko store ker liya 
-    for(int i = 0 ; i < value.length() ; i++){
+    int key = digits[index] - '0'; // given string me se character ko integer me convert ker de
+    string value = mapping[key];   // key ke value jo mapped hai mapping array me usko store ker liya
+    for (int i = 0; i < value.length(); i++)
+    {
         output.push_back(value[i]);
-        FindPossibleCombination(mapping , digits , ans , output , index+1);
-        //Backtracking
-        output.pop_back();//jub because initially string empty the to hame empty hi bana ke rakhna hai  okk!!
+        FindPossibleCombination(mapping, digits, ans, output, index + 1);
+        // Backtracking
+        output.pop_back(); // jub because initially string empty the to hame empty hi bana ke rakhna hai  okk!!
     }
 }
 //---------------------------------------------------
+//!Assignment Qus:
+long long Inversion_Merge(vector<int> &arr, int start, int end, int mid)
+{
+    int len1 = mid - start + 1;
+    int len2 = end - mid;
+
+    vector<int> leftArray(len1);
+    vector<int> rightArray(len2);
+
+    int k = start;
+    for (int i = 0; i < len1; i++)
+        leftArray[i] = arr[k++];
+
+    k = mid + 1;
+    for (int i = 0; i < len2; i++)
+        rightArray[i] = arr[k++];
+
+    int i = 0, j = 0, x = start;
+    long long invCount = 0;
+
+    while (i < len1 && j < len2)
+    {
+        if (leftArray[i] <= rightArray[j])
+        {
+            arr[x++] = leftArray[i++];
+        }
+        else
+        {
+            arr[x++] = rightArray[j++];
+            invCount += (len1 - i); // 👈 Inversion Count Increase bus ke left ke phir baki saare bhi right wale element se bade honge
+        }
+    }
+
+    while (i < len1)
+        arr[x++] = leftArray[i++];
+
+    while (j < len2)
+        arr[x++] = rightArray[j++];
+
+    return invCount;
+}
+//----------------------------------------------------------
+long long Inversion_MergeSort(vector<int> &arr, int start, int end)
+{
+    long long invCount = 0;
+    if (start < end)
+    {
+        int mid = start + (end - start) / 2;
+
+        invCount += Inversion_MergeSort(arr, start, mid);
+        invCount += Inversion_MergeSort(arr, mid + 1, end);
+
+        invCount += Inversion_Merge(arr, start, end, mid);
+    }
+    return invCount;
+}
+//---------------------------------------------------------
+ 
+
+
 
 
 
@@ -405,11 +468,22 @@ int main()
     //     cout<<it<<endl;
     // }
 
-    //!Assignment Qus
-        // Qus1 :Count Inversion
-        // note inversion cound ka code merge sort me hi ek do line ager add ker de to ban jata hai 
-        // esliye ab tuje gpt se paste kerke merge sort wala code usko count invertion banana hai 
-        // and second qus bhi done ker dena hai kal 5 bje uth ke!
-        //or phir bus terko rmaining wale 4 qus hi kerne hai yai tension ne leni
-        return 0;
+    //! Assignment Qus
+    
+    // Qus1 :Count Inversion (Pura Merge sort hi hai bus bus el line change hai merge algo ke ander you just need to remaimber)
+    // vector<int> arr = {8, 4, 2, 1};
+    // int start = 0;
+    // int end = arr.size() - 1;
+    // long long inversionCount = Inversion_MergeSort(arr, start, end);
+    // cout << "Sorted Array: ";
+    // for (int i = 0; i < arr.size(); i++)
+    //     cout << arr[i] << " ";
+    // cout << "\nTotal Inversion Count: " << inversionCount << endl;
+    
+    // Qus2 : In-Place Merge sort (Complex to implement and also TC increased in worst case)
+    
+    // Qus3 : 
+    
+    
+    return 0;
 }
