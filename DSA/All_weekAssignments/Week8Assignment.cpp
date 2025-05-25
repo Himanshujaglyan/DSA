@@ -405,6 +405,11 @@ int main()
     //     cout<<it<<endl;
     // }
 
-
-    return 0;
+    //!Assignment Qus
+        // Qus1 :Count Inversion
+        // note inversion cound ka code merge sort me hi ek do line ager add ker de to ban jata hai 
+        // esliye ab tuje gpt se paste kerke merge sort wala code usko count invertion banana hai 
+        // and second qus bhi done ker dena hai kal 5 bje uth ke!
+        //or phir bus terko rmaining wale 4 qus hi kerne hai yai tension ne leni
+        return 0;
 }
