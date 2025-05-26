@@ -383,8 +383,31 @@ long long Inversion_MergeSort(vector<int> &arr, int start, int end)
     return invCount;
 }
 //---------------------------------------------------------
- 
+ void NewQuickSort(vector<int> &arr , int start , int end){
+    if(start >= end){
+        return;
+    }
 
+    int pivot = end;
+    int i = start - 1;
+    int j = start;
+    
+    while(j < pivot){
+        if(arr[j] < arr[pivot]){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+        j++;//always increase j
+    }
+    //Now ab last me pivot ko uski sahi jaga per rakh denge 
+    i++;
+    swap(arr[i],arr[pivot]);
+    //And ab half half part per recursion chla denge
+    NewQuickSort(arr,start , i-1);//kuki i es time pivot ke possition hai 
+    NewQuickSort(arr , i+1 , end);//kuki i es time pivot ke possition hai
+
+ }
+//---------------------------------------------------------
 
 
 
@@ -482,8 +505,17 @@ int main()
     
     // Qus2 : In-Place Merge sort (Complex to implement and also TC increased in worst case)
     
-    // Qus3 : 
-    
-    
+    // Qus3 : Maximum subarray Sum (Best ans using Kadane's Algorithm)
+
+    // Qus4 : Quick Sort (Taking end element as Pivot Element)
+        //     vector<int> arr = {7,2,1,8,6,3,5,4};
+        //     int start = 0;
+        //     int end = arr.size()-1;
+        //    NewQuickSort(arr,start,end);  
+        //     for (int i = 0; i < arr.size(); i++)
+        //     {
+        //         cout<<arr[i]<<" ";
+        //     }
+            
     return 0;
 }
