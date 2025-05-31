@@ -143,6 +143,17 @@ class Animal{
 
     //!----------------------class-2----------------------------------------
 
+//! 9) Inheritence (Public , Protected , Private)
+    class Parent{
+        public://replace with private and protected as well to see the behaviour
+        int age = 21;
+    };
+    class child : public Parent{//replace with private and protected as well to see the behaviour
+        public:
+        void print(){
+            cout<<age;
+        }
+    };
 
 
     
@@ -205,8 +216,12 @@ int main(){
         
     //! Class-2 (Oops)
 
+    //9)Inheritence (Public , Protected , Private)
+        //child c1;
+        // cout<<c1.age;
+        //c1.print();   
     
-    
+    //10)
     return 0;
 
 
