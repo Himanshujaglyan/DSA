@@ -155,8 +155,95 @@ class Animal{
         }
     };
 
+//! 10) Types of Inhertance 
+    //Single Level Inheritance+_+_+_+_
+    class SingleParent{
+        public:
+        string name;
+    };
+    class SingleChild : public SingleParent{
+    };
 
+    //Multi Level Inheritance_+_+_+_+_+_
+        class Fruit{
+            public:
+            string name;
+        };
+        class Mango : public Fruit{
+            public:
+            int weight;
+        };
+        class Alphanso : public Mango{
+            public:
+            int sugarLevel;
+        };
     
+    // Multiple Level Inheritance_+_+_+_+_+_+_
+        class A{
+            public:
+            int chemistry;
+            int physics = 65;//if physics also in A class this is dymand problem to resolve it use scope resolution operator(::)
+            A(){
+                chemistry = 76;
+            }
+        };
+        class B{
+            public:
+            int physics;
+            B(){
+                physics = 73;
+            }
+        };
+        class C : public A , public B{
+            public:
+            int math = 86;
+        };
+
+    // Hierarchical Level Inheritance+_+_+_+_+_+_+_
+        class Amarnath{
+            public:
+            string name = "Amarnath";
+            int age = 60;
+        };
+        class Surinder : public Amarnath{
+
+        };
+        class Himanshu : public Amarnath{
+
+        };
+        
+    // Hybrid Level Inheritance
+        class AA{
+            public:
+            void showA(){
+                cout<<"Class A"<<endl;
+            }
+        };
+
+        class CC{
+            public:
+            void showC(){
+                cout<<"Class C"<<endl;
+            }
+        };
+
+        class BB: public AA{
+            public:
+            void ShowB(){
+                cout<<"Class B Derived form class A"<<endl;
+            }
+        };
+
+        class DD : public AA , public CC{
+            public:
+            void showD(){
+                cout<<"Class D Derived form class A and class C"<<endl;
+            }
+        };
+
+
+
+
 int main(){
     //! Class-1 (Oops)
     //1)Empty class size
@@ -215,13 +302,43 @@ int main(){
     //delete b; //this is manually deallocate the memory of object
         
     //! Class-2 (Oops)
-
+    //!Inheritence:
     //9)Inheritence (Public , Protected , Private)
         //child c1;
         // cout<<c1.age;
         //c1.print();   
     
-    //10)
+    //10) Types of Inheritance 
+      //-->Single Level Inheritance
+        // SingleChild c1;
+        // c1.name = "Father";
+        // cout<<c1.name<<endl;
+    
+      //--> Multi Level Inheritance
+        //Alphanso f1;
+        // f1.name = "Alphasno";
+        // f1.weight = 1.5;
+        // f1.sugarLevel = 1;
+        // cout<<f1.name<<" "<<f1.weight<<"kg"<<" "<<f1.sugarLevel<<"g"<<endl;
+        
+      //--> Multiple Inheritance
+        // C marks;
+        // cout<<marks.chemistry<<" "<<marks.B::physics<<" "<<marks.A::physics<<" "<<marks.math<<endl;
+
+      //--> Hierarchical Level Inheritance
+            // Himanshu himanshu;
+            // cout<<"Himanshu Father Name : "<<himanshu.name<<endl;
+            // cout<<"Himanshu Father Age : "<<himanshu.age<<endl;
+       
+      //--> Hybrid Level Inheritance
+        // DD obj;
+        // obj.showA();
+        // obj.showC();
+        // obj.showD();
+
+    //! Polymorphism:
+    
+    
     return 0;
 
 
