@@ -301,7 +301,20 @@ public:
     }
  };
 
-
+//! Run Time Polymorphism
+    //! Function Overriding
+     class Animall{
+        public:
+        virtual void speak(){
+            cout<<"Speaking"<<endl;
+        }
+     };
+     class Dogg : public Animall{
+        public:
+        void speak(){
+            cout<<"Barking"<<endl;
+        }
+     };
 
 
 int main()
@@ -412,10 +425,23 @@ int main()
     //cout<<"Result : "<<c.value<<endl;
     
     //! Run Time Polymorphism
-    
-    
-    
-    
-    
+    //! Function Overriding
+    //Static Memory Allocation
+    //Animall a;
+    //a.speak(); //Output: Speaking
+    //Dogg b;
+    //b.speak(); //Output: Barking
+    //----------------------------------------------------
+    //Dynamic Memory Allocation (Note: yaha behavior thoda alag hai jike baare me notes me ache se bataya hai mene vo padh lio)
+    Animall* a = new Animall();
+    a->speak(); //Output: Speaking
+    Animall* a = new Dogg();
+    a->speak();
+    Dogg* a = new Dogg();
+    a->speak(); //Output: Speaking
+    child* a = (child*) new Animall();
+    a->speak();
+
+Note : yai charo case samjhio pahle ache se mene note book me table bana diya hai uske acc samjhio!!
     return 0;
 }
