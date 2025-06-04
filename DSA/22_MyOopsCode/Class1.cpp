@@ -433,15 +433,15 @@ int main()
     //b.speak(); //Output: Barking
     //----------------------------------------------------
     //Dynamic Memory Allocation (Note: yaha behavior thoda alag hai jike baare me notes me ache se bataya hai mene vo padh lio)
-    Animall* a = new Animall();
-    a->speak(); //Output: Speaking
-    Animall* a = new Dogg();
-    a->speak();
-    Dogg* a = new Dogg();
-    a->speak(); //Output: Speaking
-    child* a = (child*) new Animall();
+    // Animall* a = new Animall();
+    // a->speak(); //Output: Speaking
+    //Dogg* a = new Dogg();
+    //a->speak(); //Output: Barking
+    // Animall* a = new Dogg();
+    // a->speak();
+    Dogg* a = (Dogg*) new Animall();
     a->speak();
 
-Note : yai charo case samjhio pahle ache se mene note book me table bana diya hai uske acc samjhio!!
+
     return 0;
 }
