@@ -1,21 +1,24 @@
 //! Love Babber Lecture Number 126 (Batch-1.0) and Lecture Name (Const Keyword)
 #include<bits/stdc++.h>
 using namespace std;
-
+# define PI 3.14
 class Box{
-    int length;
+     int length;//but hum yaha int se pahle mutable keyword likh ker const function me bhi 
     public:
-    Box(int l){
-        length = l;
-    }
+    // Box(int l){
+    //     length = l;
+    // }
+
+    //Initialization List = (Newly way of making Constructor)
+    Box(int l):length(l){}
+
     int getLength()const{
         return length;
     }
     void setLength(int l)const{
-        // length = l;Modify nahi ker sakte error aayega or ager const hata de to object issue keraga ke vo sirf cosnt member function ko hi call ker sakta hai !!
+        //length = l;//Modify nahi ker sakte error aayega or ager const hata de to object issue keraga ke vo sirf cosnt member function ko hi call ker sakta hai !!
     }
 };
-
 
 int main(){
     //! Const Keyword:
@@ -48,6 +51,12 @@ int main(){
         // cout<<b.getLength()<<endl;
         // b.setLength(20);
         // cout<<b.getLength()<<endl;
+        
+        //! Macros in CPP 
+        //# define PI Upper kiya hai sabse!
+        // float r = 5;
+        // float area = PI * r * r;
+        // cout << "Area of circle: " << area << endl;
         
         
         
