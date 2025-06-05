@@ -315,7 +315,7 @@ public:
             cout<<"Barking"<<endl;
         }
      };
-
+// ---------------------------------------------------------
 
 int main()
 {
@@ -439,8 +439,8 @@ int main()
     //a->speak(); //Output: Barking
     // Animall* a = new Dogg();
     // a->speak();
-    Dogg* a = (Dogg*) new Animall();
-    a->speak();
+    // Dogg* a = (Dogg*) new Animall();
+    // a->speak();
 
 
     return 0;
