@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-//!create Node by creating class
+//! 1)create Node by creating class
 // class Node{
 //     public:
 //     int data;
@@ -22,7 +22,7 @@ using namespace std;
 //     }
 // }
 
-//!Insert on Head and Tail
+//! 2)Insert on Head and Tail
 class Node{
     public:
     int data;
@@ -35,9 +35,19 @@ class Node{
         this->data = data;
         this->next = NULL;
     }
+    ~Node(){
+        cout<<"Node is Deleted"<<endl;
+    }
 };
 
-void InsertatHead(Node* &head , int data){
+void InsertatHead(Node* &head , Node* &tail ,int data){
+    //if LL is empty so there are four steps
+    if(head == NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+    } 
+    else{
     //In Three steps we can insert a new node on head of linked list
     //Step1 Create a Node
     Node* newNode = new Node(data);
@@ -45,6 +55,7 @@ void InsertatHead(Node* &head , int data){
     newNode->next = head;
     //Step update head by newNode
     head = newNode;
+    }
 }
 
 void PrintLL(Node* head){
@@ -55,14 +66,75 @@ void PrintLL(Node* head){
     }
 }
 
-void InsertatTail(Node* &head , int data){
+void InsertatTail(Node* &head , Node* &tail ,int data){
+    //if LL is empty so there are four steps
+    if(head == NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+    }
+    else{
     Node* newNode = new Node(data);
-    head->next = newNode;
-    newNode = head;
+    tail->next = newNode;
+    tail = newNode;
+    }
 }
 
-int main(){
-    //!Manually create and connect Nodes
+//! 3)Insert Node in specific position of LL
+void insertatPosition(Node* &head , Node* &tail , int data , int position){
+   if(head == NULL){//ager linked list empty hai to bus create ker do 
+    Node* newNode = new Node(data);
+    head = newNode;
+    tail = newNode;
+   }else if(position == 1){//ager position first per insert kerna hai to head wale code ko call ker do
+    InsertatHead(head , tail , data);
+   }else{ // nahi to simple at any position kahi bhi insert ker do 
+       Node* newNode = new Node(data);
+       Node* prev = NULL;
+       Node* curr = head;
+       while(position != 1){
+           position--;
+           prev = curr;
+           curr = curr->next;
+        }
+        newNode->next = curr;
+        prev->next = newNode;
+    }
+}
+
+//! 4)Delete Node from specific position in Linked list
+int lenofLL(Node* &head){
+    Node* temp = head;
+    int len = 0;
+    while(temp != NULL){
+        len++;
+        temp = temp->next;
+    }
+    return len;
+}
+
+void deleteNodeFromPosition(Node* &head , Node* &tail , int position){
+    if(position == 1){//Means delete first Node
+        Node* temp = head;
+        head = temp->next;
+        temp->next = NULL;
+        delete temp;        
+        return;
+    }
+    int len = lenofLL(head);
+    if(position == len){
+        Node* temp = head;
+        while(temp->next != tail){
+            temp = temp->next;
+        }
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
+    }
+}
+int main(){//----------------------------------------------------------------------------------
+
+    //! 1)Manually create and connect Nodes
     // Node* first = new Node(10);
     // Node* second = new Node(20);
     // Node* third = new Node(30);
@@ -75,24 +147,31 @@ int main(){
     // cout<<"Print Linked List:"<<endl;
     // PrintLL(first);    
 
-    //!Insert on Head and Tail
+    //! 2)Insert on Head and Tail
     Node* head = NULL;
-    InsertatHead(head,10);
-    InsertatHead(head,20);
-    InsertatHead(head,30);
-    InsertatHead(head,40);
-    InsertatHead(head,50);
-    cout<<"Print NewNode on Head of Linked list: "<<endl;
-    PrintLL(head);
+    Node* tail = NULL;
+
+    InsertatHead(head,tail,10);
+    InsertatHead(head,tail,20);
+    InsertatHead(head,tail,30);
+    InsertatHead(head,tail,40);
+    InsertatHead(head,tail,50);
 //--------Insert at Tail--------------------------
-    Node* head1 = NULL;
-    InsertatTail(head1,1);
-    InsertatTail(head1,2);
-    InsertatTail(head1,3);
-    InsertatTail(head1,4);
-    InsertatTail(head1,5);
-    cout<<"Print NewNode on Tail of Linked List: "<<endl;
-    PrintLL(head1);
+    InsertatTail(head,tail,4);
+    InsertatTail(head,tail,5);
     
+    PrintLL(head);
+    
+    //! 3) Insert Node in specific position of Linked list
+    // Note: upper wale code se linkedlist yai mil rahi hai => 50 40 30 20 10 4  to hame bilkul middle  insert kerna hai ya kisi bhi possition per 
+    insertatPosition(head , tail , 101 ,8 );
+    cout<<"New Node insert at any position :"<<endl;
+    PrintLL(head);
+    
+    //! 4) Delete Node from specific position in Linked list
+    deleteNodeFromPosition(head , tail , 1);
+    cout<<endl;
+    PrintLL(head);
     return 0;
 }
+
