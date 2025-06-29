@@ -36,7 +36,7 @@ class Node{
         this->next = NULL;
     }
     ~Node(){
-        cout<<"Node is Deleted"<<endl;
+        //cout<<"Node is Deleted"<<endl;
     }
 };
 
@@ -129,9 +129,21 @@ void deleteNodeFromPosition(Node* &head , Node* &tail , int position){
         }
         temp->next = NULL;
         delete tail;
-        tail = temp;
+        temp = tail;
+        return;
     }
+    Node* prev = NULL;
+    Node* curr = head;
+    while(position != 1){
+        position--;
+        prev = curr;
+        curr = curr->next;
+    }
+    prev->next = curr->next;
+    curr->next = NULL;
+    delete curr;
 }
+
 int main(){//----------------------------------------------------------------------------------
 
     //! 1)Manually create and connect Nodes
@@ -164,13 +176,14 @@ int main(){//-------------------------------------------------------------------
     
     //! 3) Insert Node in specific position of Linked list
     // Note: upper wale code se linkedlist yai mil rahi hai => 50 40 30 20 10 4  to hame bilkul middle  insert kerna hai ya kisi bhi possition per 
-    insertatPosition(head , tail , 101 ,8 );
+    insertatPosition(head , tail , 101 ,3 );
     cout<<"New Node insert at any position :"<<endl;
     PrintLL(head);
     
     //! 4) Delete Node from specific position in Linked list
-    deleteNodeFromPosition(head , tail , 1);
+    deleteNodeFromPosition(head , tail , 4);
     cout<<endl;
+    cout<<"Delete Node:"<<endl;
     PrintLL(head);
     return 0;
 }
