@@ -99,6 +99,28 @@ void deleteFromHead(Node* &head , Node* &tail){
     currNode->prev = NULL;
     delete currNode;
  }
+ //! 7) Reverse the Linked List (Note: do tarah se reverse ker sakte hai using Iterative and using Recursion)
+ Node* ReveseLL(Node* &head){
+    Node* prev = NULL;
+    Node* curr = head;
+    while(curr != NULL){
+        Node* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    return prev;
+}
+//! 8) Reverse the Linked List (Recursion)
+Node* ReverseRecursionLL(Node* &head , Node* &prev , Node* &curr){
+    //Base case
+    if(curr == NULL){
+        return prev;
+    }
+    Node* nextNode = curr->next;
+    curr->next = prev;
+    ReverseRecursionLL(head , curr , nextNode);
+}
 
 int main(){
     Node* first = new Node(10);
@@ -134,6 +156,20 @@ int main(){
     // printLL(head);
     //! 6) Delete from Position
     deleteFromPosition(head,tail,5);
+    printLL(head);
+    
+    //! 7) Reverse the Linked List (Using Iterative method)
+    // head = ReveseLL(head);
+    // cout<<endl;
+    // cout<<"Reverse Linked List (Loop):"<<endl;
+    // printLL(head);
+
+    //! 8) Reverse the Linked List (Using Recursion)
+    Node* prev = NULL;
+    Node* curr = head;
+    head = ReverseRecursionLL(head , prev , curr);
+    cout<<endl;
+    cout<<"Reverse Linked List (Recursion)"<<endl;
     printLL(head);
     return 0;
 }
