@@ -109,6 +109,53 @@ bool IsCircularLL2(Node* &head){
     }
     return false;
 }
+//! 6) Find starting Node of loop in Linked List
+Node* startingNodeOfLL(Node* &head){
+    Node* fast = head;
+    Node* slow = head;
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+        if(fast == slow){
+            //ager dono meet ho gaye to slow ko dubara head per point ker denge 
+            slow = head;
+            break;
+        }
+    }
+    while(fast != slow){
+        slow = slow->next;
+        fast = fast->next;
+    }
+    return slow;
+}
+//! 7) Remove Loop from the Linked List
+Node* removeLoopOfLL(Node* &head){
+      Node* fast = head;
+    Node* slow = head;
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+        if(fast == slow){
+            //ager dono meet ho gaye to slow ko dubara head per point ker denge 
+            slow = head;
+            break;
+        }
+    }
+    Node* prev = fast;
+    while(fast != slow){
+        prev = fast;
+        slow = slow->next;
+        fast = fast->next;
+    }
+    prev->next = NULL;
+    return slow;
+}
 
 int main(){
     Node* head = new Node(10);
@@ -124,7 +171,7 @@ int main(){
     fourth->next = fifth;
     fifth->next = tail;
     //just for to make circular linked list
-    tail->next = head;
+    tail->next = third;
 
     //! 1) Find Middle Node in Linked List (using Length Approach)
     // Node* middleNode = FindMiddleNode1(head);
@@ -147,6 +194,12 @@ int main(){
         // }else{
         //     cout<<"No it is not circular LL"<<endl;
         // }
-    //! 6) 
+    //! 6) Find starting Node of loop in Linked List
+    // cout<<"Starting Node of Loop in LL : "<<startingNodeOfLL(head)->data<<endl; 
+    //! 7) Remove Loop from the linked list
+    // cout<<"Remove Loop from the Linked List : "<<endl;
+    // removeLoopOfLL(head);
+    // PrintLL(head);
+    
     return 0;
 }
