@@ -107,6 +107,65 @@ void DeleteFromAnyPosition(Node* &head , int position){
     curr->next = NULL;
     delete curr;
 }   
+Node* ReverseLL(Node* &head){
+    Node* prev = NULL;
+    Node* curr = head;
+    while(curr != NULL){
+        Node* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    return prev;
+}
+Node* FindMiddleNode(Node* &head){
+    Node* slow = head;
+    Node* fast = head;
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+    }
+    return slow;
+}
+bool CheckPalindrom(Node* &head){
+    Node* midNode = FindMiddleNode(head);
+    Node* reverseLinkedListHead = ReverseLL(midNode->next);
+    midNode->next = reverseLinkedListHead;
+
+    Node* temp1 = head;
+    Node* temp2 = reverseLinkedListHead;
+
+    while(temp2 != NULL){
+        if(temp1->data != temp2->data){
+            return false;
+        }else{
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+    }
+    return true;
+}
+bool IsCycleInLL(Node* &head){
+    Node* slow = head;
+    Node* fast = head;
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+        if(fast == slow){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
 
 int main(){
     Node* head = new Node(10);
@@ -149,7 +208,24 @@ int main(){
     // PrintLL(head);
     //!-----------------Doubly Linked list  (Note : Doubly linked list ke liye eske niche wali file hai with Name- LL_Revesion_2)
     //Baki niche mene singly linked list ke hi or important solve kiye hai@!!
-    
-    
+    //! Reverse the Linked list
+    // head = ReverseLL(head);
+    // PrintLL(head);
+    //! Find middle Node data from LL
+    //  Node* middleNode = FindMiddleNode(head);
+    // cout<<middleNode->data<<endl;
+    //! Check given LL is palindrom or not
+    // if(CheckPalindrom(head)){
+    //     cout<<"Yes it is palindrom string"<<endl;
+    // }else{
+    //     cout<<"No it is not palindrom string"<<endl;
+    // }
+    //! Is cycle present in linked list or not
+    // if(IsCycleInLL(head)){
+    //     cout<<"Yes Cycle is present in Linked list"<<endl;
+    // }else{
+    //     cout<<"No Cycle is Not present in Linked list"<<endl;
+    // }
+    //! 
     return 0;
 }
