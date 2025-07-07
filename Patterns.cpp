@@ -195,25 +195,81 @@ int main(){
     //     cout<<endl;
     // }
 
-    int space = 2*(5-1);
-    for(int i = 1 ; i <= 5 ; i++){
-        //star
-        for(int j = 0 ; j < i ; j++){
-            cout<<"*"<<" ";
-        }
-        //space
-        for(int j = 0 ; j < space ; j++){
-            cout<<" "<<" ";
-        }
-        //star
-        for(int j = i ; j > 0 ; j--){
-            cout<<"*"<<" ";
-        }
-        space = space-2;
-        cout<<endl;
-    }
+    //int space = 2*(4-1);
+//    for(int i = 1 ; i <= 4 ; i++){
+//     //stars
+//     for(int j = 1 ; j <= i ; j++){
+//         cout<<j<<" ";
+//     }
+//     //spaces
+//     for(int j = 0 ; j < space ; j++ ){
+//         cout<<" "<<" ";
+//     }
+//     //stars
+//     for(int j = i ; j >= 1 ; j--){
+//         cout<<j<<" ";
+//     }
+//     space = space - 2;
+//     cout<<endl;
+//    }    
+    
+    // for(int i = 0 ; i < 5 ; i++){
+    //     //spaces
+    //     for(int j = 0 ; j < 5-i-1 ; j++ ){
+    //         cout<<" "<<" ";
+    //     }
+    //     //stars
+    //     char ch = 'A';
+    //     int breakPoint = (2*i+1)/2;
+    //     for(int j = 0 ; j < 2*i+1 ; j++){
+    //         cout<<ch<<" ";
+    //         if(j < breakPoint){
+    //             ch++;
+    //         }else{
+    //             ch--;
+    //         }
+    //     }
+    //     //spaces
+    //     for(int j = 0 ; j < 5-i-1 ; j++ ){
+    //         cout<<" "<<" ";
+    //     }
+    //     cout<<endl;
+    // }
 
-    Note : kal subha aake es uper wale qus ko thoda dhyan se samjna hai or baki ke remainng qus 
-    done kerke phir array ke revesion ke baare me sochna hai okk!!
+    // for(int i = 0 ; i < 5 ; i++){
+    //     //stars
+    //     for(int j = 0 ; j < 5-i-1 ; j++){
+    //         cout<<"*"<<" ";
+    //     }
+    //     //spaces
+    //     for(int j = 0 ; j < 2*i ; j++){
+    //         cout<<" "<<" ";
+    //     }
+    //     //stars
+    //     for(int j = 0 ; j < 5-i-1 ; j++){
+    //         cout<<"*"<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+    // int space = 2*(4-1);
+    // for(int i = 1 ; i <= 4 ; i++){
+    //     //stars
+    //     for(int j = 0 ; j < i ; j++){
+    //         cout<<"*"<<" ";
+    //     }
+    //     //spaces
+    //     for(int j = 0 ; j < space ; j++){
+    //         cout<<" "<<" ";
+    //     }
+    //     //stars
+    //     for(int j = 0 ; j < i ; j++){
+    //         cout<<"*"<<" ";
+    //     }
+    //     space = space-2;
+    //     cout<<endl;
+    // }
+
+    
+
     return 0;
 }
