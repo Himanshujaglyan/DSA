@@ -166,7 +166,7 @@ bool IsCycleInLL(Node* &head){
 
 
 
-
+ 
 int main(){
     Node* head = new Node(10);
     Node* first = new Node(20);
@@ -180,7 +180,7 @@ int main(){
     third->next = tail;
 
 
-    //!Print the Linked list
+    //!✅Print the Linked list
     // PrintLL(head);
     //!Find Length of Linked List
     // int len = FindlenLL(head);
@@ -197,35 +197,34 @@ int main(){
     //! Insert at any position in Linked list
     // InsertInbetweenInLL(head ,100, 3);
     PrintLL(head);
-    //! Delete head from linked list
+    //!✅Delete head from linked list
     // head = DeleteFromHead(head);
     // PrintLL(head);
-    //! Delete tail from Linked list
+    //!✅Delete tail from Linked list
     // DeleteFromTail(head , tail);
     // PrintLL(head);
-    //! Delete from any position
+    //!✅Delete from any position
     // DeleteFromAnyPosition(head , 3);
     // PrintLL(head);
     //!-----------------Doubly Linked list  (Note : Doubly linked list ke liye eske niche wali file hai with Name- LL_Revesion_2)
     //Baki niche mene singly linked list ke hi or important solve kiye hai@!!
-    //! Reverse the Linked list
+    //!✅Reverse the Linked list
     // head = ReverseLL(head);
     // PrintLL(head);
-    //! Find middle Node data from LL
+    //!✅Find middle Node data from LL
     //  Node* middleNode = FindMiddleNode(head);
     // cout<<middleNode->data<<endl;
-    //! Check given LL is palindrom or not
+    //!Check given LL is palindrom or not
     // if(CheckPalindrom(head)){
     //     cout<<"Yes it is palindrom string"<<endl;
     // }else{
     //     cout<<"No it is not palindrom string"<<endl;
     // }
-    //! Is cycle present in linked list or not
+    //!✅Is cycle present in linked list or not
     // if(IsCycleInLL(head)){
     //     cout<<"Yes Cycle is present in Linked list"<<endl;
     // }else{
     //     cout<<"No Cycle is Not present in Linked list"<<endl;
     // }
-    //! 
     return 0;
 }

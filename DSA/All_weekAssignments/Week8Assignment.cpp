@@ -91,7 +91,7 @@ int PiviotPosition(vector<int> &arr, int start, int end)
     // Now piviot ek possition per set ho gaya hai ab left me saare piviot se smaller rakhenge and right me piviot se bade rakhenge
     while (i < piviotIndex && j > piviotIndex)
     {
-        // ab hum check ker rahe hai ke left side me saare small element hai na to I++
+        // ab hum check ker rahe hai ke left side me saare small element hai na to i++
         while (arr[i] <= piviotElement)
         {
             i++;
@@ -159,6 +159,7 @@ bool isSafe(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vec
         return false;
     }
 }
+
 void FindPathInMaze(vector<vector<int>> &arr, int row, int col, int i, int j, vector<vector<bool>> &visited, vector<string> &path, string output)
 {
     // Base case

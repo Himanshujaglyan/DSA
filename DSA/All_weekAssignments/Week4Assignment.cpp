@@ -1,4 +1,5 @@
-#include<bits/stdc++.h> ///Binary Search Qus
+//! Binary Search Qus
+#include<bits/stdc++.h>
 using namespace std;
 int  FirstOccurencebinarySearch(vector<int> arr ,int target){
     int start = 0 , end = arr.size() - 1;

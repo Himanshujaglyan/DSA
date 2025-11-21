@@ -1,3 +1,4 @@
+//! Dubley Linked list*************************************
 #include<bits/stdc++.h>
 using namespace std;
 class Node{
@@ -19,6 +20,7 @@ void PrintLL(Node* head){
     }
     cout<<endl;
 }
+
 int FindLLlen(Node* head){
     Node* temp = head;
     int count = 0;
@@ -28,6 +30,7 @@ int FindLLlen(Node* head){
     }
     return count;
 }
+
 Node* InsertatHead(Node* head , int data){
     Node* newNode = new Node(data);
     newNode->next = head;
@@ -35,12 +38,14 @@ Node* InsertatHead(Node* head , int data){
     head = newNode;
     return head;
 }
+
 void InsertatTail(Node* head , Node* tail , int data){
     Node* newNode = new Node(data);
     tail->next = newNode;
     newNode->prev = tail;
     tail = newNode;
 }
+
 void InsertAtanyPosition(Node* head , int data , int position){
     Node* newNode = new Node(data);
     Node* left = NULL;
@@ -57,6 +62,7 @@ void InsertAtanyPosition(Node* head , int data , int position){
     curr->prev = newNode;
     
 }
+
 Node* DeleteFromHead(Node* &head){
     Node* temp = head;
     head = temp->next;
@@ -64,6 +70,7 @@ Node* DeleteFromHead(Node* &head){
     delete temp;
     return head;
 }
+
 void DeleteFromNode(Node* &head , Node* &tail){
     Node* temp = head;
     while(temp->next != tail){
@@ -73,6 +80,7 @@ void DeleteFromNode(Node* &head , Node* &tail){
     delete tail;
     tail = temp;
 }
+
 void DeleteFromAnyPosition(Node* &head , int position){
     Node* prevNode = NULL;
     Node* currNode = head;

@@ -57,7 +57,6 @@ void ConvertIntoUpperCase(char ch[]){
     {
         ch[i] = ch[i]-'a'+'A';
     }
-
 }
 //-----------------------------------------------
 string removeDuplicates(string str){
@@ -391,25 +390,26 @@ string IntegerToRoman(int num){
 
 int main(){
     // 1st Class of Char Array and String!!****************************************
-// Qus1 Length of char Array?
+
+//✅ Qus1 Length of char Array?
     // char ch[10] = {'a','s','f','g','h','t','e','g','d'};
     // int length = getLength(ch);
     // cout<<length;
    
-// Qus2 Reverse Char Array?
+//✅ Qus2 Reverse Char Array?
     // char ch[10];
     // cin>>ch;
     // Reverse_CharArray(ch);
     // cout<<ch;
     
-// Qus3 Fill spaces with @ symbol?
+//✅Qus3 Fill spaces with @ symbol?
     // char ch[100];
     // cout<<"Enter your String = ";
     // cin.getline(ch,100);
     // Fillthespace(ch);
     // cout<<ch;
     
-// Qus4 Check Palindrom or not?
+//✅Qus4 Check Palindrom or not?
     // char ch[10];
     // cout<<"Enter input = ";
     // cin>>ch;
@@ -419,7 +419,7 @@ int main(){
     //     cout<<"It is not Palindrom!!";
     // }
 
-// Qus5 Convert lowercase character to upper case?
+//✅Qus5 Convert lowercase character to upper case?
     // char ch[10];
     // cout<<"Enter the String = ";
     // cin>>ch;
@@ -428,25 +428,25 @@ int main(){
 
     //2nd Class of Char Array and String!!*************************************
 
-// Qus6 Remove all adjacent Duplicate in the String?
+//✅Qus6 Remove all adjacent Duplicate in the String?
     // string str = "abbaca";//Output: "ca"
     // string ans = removeDuplicates(str);
     // cout<<ans;
     
-// Qus7 Remove all occurrences of a substring?
+//✅Qus7 Remove all occurrences of a substring?
     // string str = "daabcbaabcbc";
     // string part = "abc";
     // string rem = removeAllOccurrences(str,part);
     // cout<<rem;  
    
-// Qus8 Find part of string in big string and return the first find index
+//✅Qus8 Find part of string in big string and return the first find index
     // yai qus ager interviewerr bol de ke find() function mat use kero manually find ka code likho
     // string str = "Himanshu";
     // string part = "man";
     // int findIndex = FindInstring(str, part);
     // cout<<findIndex;
    
-// Qus9 Valid Palindrome (||) leetcode - 680    
+//✅Qus9 Valid Palindrome (||) leetcode - 680    
     // string str = "leverl";
     // if(Valid_Palindrome(str)){
     //     cout<<"This is valid Palindrome!";
@@ -473,9 +473,9 @@ int main(){
 
         //2nd WEEK 5 CONNECTION !!*************************************
 // ------------------------------------------------------------------------------------------------------
-        // Assignment Qus week 5 Strings @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //! Assignment Qus week 5 Strings @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-// Qus 1 Valid Anagram (Leetcode - 242)
+//✅Qus 1 Valid Anagram (Leetcode - 242)
         // string str1 = "anagram";
         // string str2 = "nagaram";
         // if(validAnagram(str1,str2)){
@@ -485,17 +485,17 @@ int main(){
         //     cout<<"Not Anagram";
         // }
 
-// Qus 2 Reverse Only Letters?
+//✅Qus 2 Reverse Only Letters?
     // string str = "a-bC-dEf-ghIj!"; // Output - j-Ih-gfE-dCba!
     // string ans = ReverseOnlyLetters(str);
     // cout<<ans;
     
-// Qus 3 Longest Comman Prefix? 
+//✅Qus 3 Longest Comman Prefix? 
         // vector<string> str = {"flower","flow","flight"};
         // string ans = LongestCommanPrefix(str);
         // cout<<ans;
     
-// Qus 4 Reverse Only Vowels?
+//✅Qus 4 Reverse Only Vowels?
     // string str = "leetcode"; // output - leotcede;
     // string ans = ReverseOnlyVowel(str);
     // cout<<ans;
@@ -526,10 +526,10 @@ int main(){
     // }
 
 // Qus 8 Longest Palindromic Substring (leetcode - 5)
-    //  ! ESKA SOLUTION jub me Dynamic programing kerunga tub milega merko 
+    //! ESKA SOLUTION jub me Dynamic programing kerunga tub milega merko 
 
 
-//Qus 9 Find the index of first Occurence (leetcode - 28)
+//✅Qus 9 Find the index of first Occurence (leetcode - 28)
     // string str = "Himanshu";
     // string part = "man";
     // int findIndex = findFirstIndex(str, part);
@@ -544,8 +544,7 @@ int main(){
     // string str = "aaabbcc"; // output = a3b2c2
     // string ans = StringCompression(str);
     // cout<<ans;
-   
-    
+       
  //Qus 12 Integer to roman (leetcode - 12)
     // int num = 1949;
     // string ans = IntegerToRoman(num);

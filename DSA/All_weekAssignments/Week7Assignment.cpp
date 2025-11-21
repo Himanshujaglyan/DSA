@@ -6,6 +6,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+
 void counting1(int n)
 {
     if (n == 0)
@@ -38,7 +39,7 @@ int powerOf2(int n)
     return ans;
 }
 //-----------------------------------------------
-int fib(int n)
+int fib(int n) 
 {
     if (n == 1)
         return 0;
@@ -181,7 +182,7 @@ void printAllSubsequenceof_Array(vector<int> &arr, vector<int> &output, int i, v
     // Backtrack
     output.pop_back();
 }
-//-----------------------------------------
+//-----------------------------------------q
 int MinCoinRequired(vector<int> &arr, int target)
 {
     // Base case
@@ -406,43 +407,43 @@ int main()
     // or find how many times the number is appear in the array using recursion
     // ----------------------------------------------
 
-    // 1. Counting (Normal => 1-5) HEAD Recursion  using recursion?
+    // ✅✅1. Counting (Normal => 1-5) HEAD Recursion  using recursion?
     // int n = 5;
     // counting1(n);
 
-    // 2. Counting (Reverse => 5-1) TAIL Recursion  using recursion?
+    // ✅✅2. Counting (Reverse => 5-1) TAIL Recursion  using recursion?
     // int n = 5;
     // counting2(n);
 
-    // 3. Find Factorial of number using Recursion?
+    // ✅✅3. Find Factorial of number using Recursion?
     // int n = 5; //5!
     // int ans = factorial(n);
     // cout<<"Factorial of "<<n<<" is "<<ans;
 
-    // 4. Any power of 2 calculation using Recusion? Ex:- 2^4 = 16
+    // ✅✅4. Any power of 2 calculation using Recusion? Ex:- 2^4 = 16
     // int n = 4; // this the power of 2
     // int ans = powerOf2(n);
     // cout<<ans;
 
-    // 5. Fibonacchi (Means konsi term ke hum fibonacchi number dekhna cahite hai ) means Ex:- (0 1 1 2 3 5 8 13) jesa yaha first term per zero hai seocnd per 1 hai or so on !
+    // ✅✅5. Fibonacchi (Means konsi term ke hum fibonacchi number dekhna cahite hai ) means Ex:- (0 1 1 2 3 5 8 13) jesa yaha first term per zero hai seocnd per 1 hai or so on !
     // int n = 5;
     // int ans = fib(n);
     // cout<<ans;
 
     //! Recursion Level-2
 
-    // 6. Climb Staires (This is qus is very similar or we can say same as fibonacci series okk)
+    // ✅✅6. Climb Staires (This is qus is very similar or we can say same as fibonacci series okk)
     // int n = 3;
     // int ans = climbStaires(n);
     // cout<<ans;
 
-    // 7. Print all elements of Array using Recursion?
+    // ✅✅7. Print all elements of Array using Recursion?
     // vector<int> arr = {10,20,30,40,50};
     // int n = arr.size();
     // int i = 0;
     // printArrayElement(arr, n , i);
 
-    // 8. Find Max Element in Array using Recusion?
+    // ✅✅8. Find Max Element in Array using Recusion?
     // vector<int> arr = {10,21,11,42,22,12};
     // int n = arr.size();
     // int i = 0;
@@ -452,7 +453,7 @@ int main()
 
     //! Note : String me char find kerne wale qus ke niche maine 3 varity ke qus(9,10,11) kiye hai okk!!!
 
-    // 9. Find char in String using Recursion?
+    // ✅✅9. Find char in String using Recursion?
     //    string str = "himanshu";
     //    char key = 'h';
     //    int i = 0;
@@ -463,7 +464,7 @@ int main()
     //         cout<<"Key is Not Present";
     //     }
 
-    // 10. Check whether the Char present In String or Not and -->return Index?
+    // ✅✅10. Check whether the Char present In String or Not and -->return Index?
     // string str = "himanshu";
     // int n = str.length();
     // int i = 0;
@@ -471,7 +472,7 @@ int main()
     // int ans = IsPresentChar(str,n,i,key);
     // cout<<ans;
 
-    // 11. Check wheter the Char present in string and How many times -->print all Indexes Return in Array?
+    // ✅✅11. Check wheter the Char present in string and How many times -->print all Indexes Return in Array?
     // string str = "abcbdbebfb";
     // int n = str.length();
     // int i = 0;
@@ -482,7 +483,7 @@ int main()
     //     cout<<ele<<" ";
     // }
 
-    // 12. Print All Digit of Number?
+    // ✅✅12. Print All Digit of Number?
     // int num = 435;
     // vector<int> arr;
     // PrintAllDigit(num,arr);
@@ -493,7 +494,7 @@ int main()
 
     //! Recursion Level-3
 
-    // 13. Check Give Array is Sorted or Not?
+    // ✅✅13. Check Give Array is Sorted or Not?
     // vector<int> arr = {1,2,3,4,5,6,7};
     // int i = 1;
     // int n = arr.size();
@@ -503,7 +504,7 @@ int main()
     //     cout<<"UnSorted";
     // }
 
-    // 14. Search Element in Array using Binary Search (Recursion)?
+    // ✅✅14. Search Element in Array using Binary Search (Recursion)?
     // vector<int> arr = {2,4,6,8,10,12,14,16};
     // int target = 12;
     // int s = 0;
@@ -511,7 +512,7 @@ int main()
     // int ans = BSrecursion(arr,s,e,target);
     // cout<<ans;
 
-    // 15. Find all Possible Subsequence of a string using Recusion (method - Includign/Excluding)?
+    // ✅✅15. Find all Possible Subsequence of a string using Recusion (method - Includign/Excluding)?
     // string str = "abc";
     // string output = "";
     // int i = 0 ;
@@ -521,7 +522,7 @@ int main()
     //     cout<<it<<endl;
     // }
 
-    // extra 16. Find all Possible Subsequence of an Array using Recursion (method - Including/Excluding)?
+    // ✅✅16. Find all Possible Subsequence of an Array using Recursion (method - Including/Excluding)?
     //  vector<int> arr = {1, 2, 3}; // Example array
     //  vector<int> output;
     //  vector<vector<int>> ans;
@@ -564,14 +565,14 @@ int main()
 
     //! Recursion 13 Assignment QUS :-
 
-    // Qus1. Last Occurence of a Character?
+    // ✅Qus1. Last Occurence of a Character?
     // string str = "abcddedg";
     // char target = 'd';
     // int i = str.length()-1;
     // int ans = Find_LastOccOFChar(str,target,i);
     // cout<<"Last Occurence of "<<target<<" is "<<ans;
 
-    // Qus2. Reverse a String Using Recursion?
+    // ✅Qus2. Reverse a String Using Recursion?
     // string str = "himanshu";
     // int start = 0;
     // int end = str.length()-1;
